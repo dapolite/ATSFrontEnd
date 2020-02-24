@@ -1,0 +1,62 @@
+.demoForm {
+	width: 50%;
+	height: 100vh;
+	/* background-color: khaki; */
+	padding-top: 4%;
+	padding-left: 7%;
+	padding-right: 7%;
+}
+
+.leftside-logo{
+    background-size:contain;
+    height: 100vh;
+    float: left;
+    background-repeat: no-repeat;
+}
+
+.sudh-logo{
+	height: 60px;
+}
+
+.h5{
+	padding-top: 3%;
+}
+
+.recruitment-logo{
+    float: left;
+    width: 30%;
+    margin: 10%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.recruitment-logo img{
+    width: 100%;
+    padding: 10%;
+}
+
+.man-logo{
+    float: right;
+    width: 30%;
+    margin: 10%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.man-logo img{
+    width: 100%;
+    padding: 10%;
+}
+
+.button{
+    padding-left: 12%;
+    padding-right: 12%;
+    padding-bottom: 1%;
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+span.tab-space{
+    padding-left: 0.5em ;
+}

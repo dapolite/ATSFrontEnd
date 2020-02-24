@@ -1,0 +1,62 @@
+.demoForm {
+	height: 100vh;
+	overflow: auto;
+	/* background-color: khaki; */
+
+}
+
+.leftside-logo{
+    background-size:contain;
+    height: 100vh;
+    float: left;
+    background-repeat: no-repeat;
+}
+
+.linkedin-logo{
+	height: 50px;
+}
+
+.sudh-logo{
+	height: 60px;
+}
+
+.form-group{
+	width: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.form-group1{
+	width: 48%;
+	float: left;
+}
+
+.form-group2{
+	width: 48%;
+	float: right;
+}
+
+.form-group3{
+	width: 48%;
+	float: left;
+}
+
+.form-group4{
+	width: 48%;
+	float: right;
+}
+
+.h5{
+	padding-top: 3%;
+}
+
+.button1 {
+    width: 45%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 2%;
+	background-color: red;
+}

@@ -1,0 +1,52 @@
+.clock{
+    float: right;
+}
+
+.vp{
+    padding: 6%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.vp1{
+    float: left;
+    height: 12%;
+    width: 5%;
+}
+.vp2{
+    float: left;
+    height: 4%;
+    width: 2%;
+}
+
+.vp4{
+    float: left;
+    margin-top: 5px;
+    margin-left: 9px;
+}
+
+.companyname{
+    float: left;color: #616C6F;
+}
+
+hr{
+    margin-left: 20%;
+    background-color: black;
+}
+
+.vp3{
+    height: 5%;
+    width: 2%;
+    margin-right: 55%;
+}
+
+.vp5{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: red;
+    border: none;
+    color: #fff;
+    border-radius: 20px;
+}

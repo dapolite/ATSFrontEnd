@@ -1,0 +1,18 @@
+.clock{
+    float: right;
+}
+
+.mc{
+    padding: 2%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.mc1{
+    float: left;
+}
+
+.mc2{
+    width: 2%;
+    float: left;
+}

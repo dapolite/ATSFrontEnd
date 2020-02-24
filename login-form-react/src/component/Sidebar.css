@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.app{
+    display: flex;
+}
+
+.sidebar-container{
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    z-index: 1001;
+}
+
+.sidebar-link{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebar-link:hover{
+    border-right: 5px solid dimgray;
+    background-color: whitesmoke;
+}
+
+.homes-img{
+    width: 12%;
+    height: 5%;
+    float: left;
+    margin-left: 7%;
+}
+
+.line-color{
+    background-color: red;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.content{
+    width: 100%;
+    height: 100vh;
+}
+
+.bottomDiv{
+    position: absolute;
+}
