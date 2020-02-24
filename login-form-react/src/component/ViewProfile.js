@@ -23,32 +23,32 @@ export default class ViewProfile extends React.Component{
                     <span><b className="vp4">BASIC INFO</b></span><br/><br/><br/>
                     <div>
                         <span className="companyname"><b>Company Name</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>Username</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>Email Address</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>Phone Number</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>Address</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>Category</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/><br/><br/>
 
                     <img src={cast} className="vp2" alt="cast.png"></img>
@@ -57,11 +57,11 @@ export default class ViewProfile extends React.Component{
                     <div>
                         <span className="companyname"><b>Social Links</b></span><br/>
                         <img src={google_plus} className="vp3" alt="google_plus.png"></img>
-                        <hr/>
+                        <hr className="hr1"/>
                         <img src={linkedin} className="vp3" alt="linkedin.png"></img>
-                        <hr/>
+                        <hr className="hr1"/>
                         <img src={facebook} className="vp3" alt="facebook.png"></img>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/><br/><br/>
 
                     <img src={locked} className="vp2" alt="locked.png"></img>
@@ -69,17 +69,17 @@ export default class ViewProfile extends React.Component{
 
                     <div>
                         <span className="companyname"><b>Current Password</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>New Password</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/>
 
                     <div>
                         <span className="companyname"><b>Re-Type Password</b></span><br/>
-                        <hr/>
+                        <hr className="hr1"/>
                     </div><br/><br/><br/>
 
                     <button type="submit" className="vp5">Save</button>
