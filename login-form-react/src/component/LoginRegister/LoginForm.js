@@ -87,7 +87,7 @@ class Form extends Component {
            </div><br/><br/>
            <div>
             <button type="submit" className="btn btn-danger" onClick={() => history.push('/Dashboard')} disabled={!this.state.formValid}>Login</button>
-             <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/CandidateDashboard')}>Sign up</button><br/><br/>
+             <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterStart')}>Sign up</button><br/><br/>
            </div><br/>
            <p><b>Or Login With</b></p>
            <a>
