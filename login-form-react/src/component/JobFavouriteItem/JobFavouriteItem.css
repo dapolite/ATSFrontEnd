@@ -1,0 +1,46 @@
+.stuffjbf{
+    margin: 1%;
+    padding: 2%;
+    
+}
+
+.itemjbf{
+    padding: 5px;
+    margin: 15px;
+    float: right;
+
+}
+
+.v1jbf{
+    padding: 2%;
+    width: 100%;
+    background-color: lawngreen;
+}
+
+.col-spacedjbf {
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.row-spaced-jbf {
+    margin-top: 10px;
+}
+
+.col-spacesspjbf{
+    margin-right: 5px;
+}
+
+.col-spacedjbf12 {
+    margin-left: 25px;
+}
+
+.thumbjbf{
+    width: 80px;
+    height:80px;
+}
+
+
+.heart{
+padding: 10%;
+}
+

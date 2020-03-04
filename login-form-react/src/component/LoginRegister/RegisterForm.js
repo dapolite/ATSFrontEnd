@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { RegisterFormErrors } from '../component/RegisterFormErrors';
+import { RegisterFormErrors } from './RegisterFormErrors';
 import './RegisterForm.css';
-import leftside from '../assets/leftside.jpg';
-import SUDH_logo_1 from '../assets/SUDH_logo_1.png';
-import linkedin_icon_flat from '../assets/linkedin_icon_flat.png';
-import history from './history';
+import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
+import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
+import linkedin_icon_flat from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/linkedin_icon_flat.png';
+import history from '../history';
 
 class Form extends Component {
   constructor (props) {
@@ -102,10 +102,10 @@ class Form extends Component {
             <h5 class="h5" align="center">Please complete to create your account</h5><br></br>
             <div>
               <div className={`form-group1 ${this.errorClass(this.state.formErrors.email)}`}>
-                <input type="text" required className="form-control" name="fname"
+                <input type="text" className="form-control" name="fname"
                   placeholder="First Name"
                   value={this.state.fname}
-                  onChange={this.handleUserInput}/>
+                  onChange={this.handleUserInput} required/>
               </div>
 
               <div className={`form-group2 ${this.errorClass(this.state.formErrors.email)}`}>
@@ -160,11 +160,13 @@ class Form extends Component {
                 onChange={this.handleUserInput}  />
             </div>
 
-            <button type="submit" className="button1" onClick={() => history.push('/Sidebar')}>Sign Up</button><br/><br/>
+            <button type="submit" className="button1" onClick={() => history.push('/Dashboard')}>Sign Up</button><br/><br/>
 
             <div>
               <p><b>Or Login With</b></p>
-              <img src={linkedin_icon_flat} className="linkedin-logo" alt="linkedin_icon_flat.png"></img>
+              <a href="https://www.linkedin.com/">
+                <img src={linkedin_icon_flat} className="linkedin-logo" alt="linkedin_icon_flat.png"></img>
+              </a>
             </div><br/><hr/>
             <label> 
               <input type="checkbox" name="remember"/>By checking this box, you agree Sudh Infosys <br/><b>Privacy Policy</b> and <b>Terms of use</b>

@@ -1,0 +1,43 @@
+/* .title{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}  */
+
+.thumb{
+    width: 80px;
+    height:80px;
+}
+
+
+.stuff{
+    margin: 1%;
+    padding: 2%;
+    
+}
+
+.item{
+    padding: 10px;
+    margin: 15px;
+
+}
+
+.v1{
+    padding: 1%;
+    width: 50%;
+
+}
+
+.col-spaced {
+    margin-left: 150px;
+}
+
+.row-spaced {
+    margin-top: 15px;
+}
+
+.col-spaced1 {
+    margin-left: 15px;
+}

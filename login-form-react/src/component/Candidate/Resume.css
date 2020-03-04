@@ -1,0 +1,60 @@
+.resume2{
+    float: right;
+    width: 70%;
+}
+
+.resume1{
+    float: left;
+    width: 25%;
+}
+
+.resume-page1{
+    overflow: auto;
+    padding: 2%;
+    height: 100vh;
+}
+
+.resume-page{
+    overflow: auto;
+    height: 100vh;
+}
+
+@media screen and (max-width: 600px) 
+{
+    .column 
+    {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+}
+
+.resume3
+{
+    float: right;
+    width: 70%;
+}
+
+.res-btn{
+    float: initial;
+    width: 15%;
+    padding: 1%;
+}
+
+.input1{
+    width: 100%;
+    padding: 1%;
+}
+
+.input12{
+    width: 100%;
+    padding-bottom: 25%;
+    padding-left: 1%;
+    padding-top: 1%;
+}
+
+.input13{
+    float: left;
+    padding: 3%;
+    border: none;
+}

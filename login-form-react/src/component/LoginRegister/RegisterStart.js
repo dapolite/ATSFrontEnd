@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './RegisterStart.css';
-import SUDH_logo_1 from '../assets/SUDH_logo_1.png';
-import leftside from '../assets/leftside.jpg';
-import recruitment from '../assets/recruitment.png';
-import man from '../assets/man.png';
-import history from './history';
+import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
+import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
+import recruitment from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/recruitment.png';
+import man from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/man.png';
+import history from '../history';
 
 class Form extends Component {
   render () {
@@ -29,7 +29,7 @@ class Form extends Component {
                   <p>Job Seeker</p>
                 </div>
               </div><br/><br/>
-              <p>Already have an account?<span className="tab-space"><a href="#">Log In</a></span></p><hr />
+              <p>Already have an account?<span className="tab-space"><a href="/">Log In</a></span></p><hr />
               <label> 
                 <input type="checkbox" name="remember"/>By checking this box, you agree Sudh Infosys <br/><b>Privacy Policy</b> and <b>Terms of use</b>
               </label>

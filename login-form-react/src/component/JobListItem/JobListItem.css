@@ -1,0 +1,48 @@
+.stuffjbl{
+    margin: 1%;
+    padding: 2%;
+    
+}
+
+.itemjbl{
+    padding: 5px;
+    margin: 15px;
+    float: right;
+
+}
+
+.v1jbl{
+    padding: 2%;
+    width: 100%;
+}
+
+.col-spacedjbl {
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.row-spaced-jbl {
+    margin-top: 10px;
+}
+
+.col-spacesspjbl{
+    margin-right: 5px;
+}
+
+.col-spacedjbl12 {
+    margin-left: 25px;
+}
+
+.thumbjbl{
+    width: 80px;
+    height:80px;
+}
+
+.float-right{
+    width:35%;
+}
+
+.heart{
+padding: 10%;
+}
+

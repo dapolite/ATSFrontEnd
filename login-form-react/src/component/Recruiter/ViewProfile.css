@@ -3,7 +3,7 @@
 }
 
 .vp{
-    padding: 6%;
+    padding: 2%;
     height: 100vh;
     overflow: auto;
 }
@@ -29,7 +29,7 @@
     float: left;color: #616C6F;
 }
 
-hr1{
+.hr1{
     margin-left: 20%;
     background-color: black;
 }
