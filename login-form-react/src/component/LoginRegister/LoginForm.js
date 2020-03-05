@@ -5,80 +5,46 @@ import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg
 import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
 import linkedin_icon_flat from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/linkedin_icon_flat.png';
 import history from '../history';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Form extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      formErrors: {email: '', password: ''},
-      emailValid: true,
-      passwordValid: true,
-      formValid: false
-    }
-  }
+  state = {
+    email: '',
+    password: ''
+  };
 
-  handleUserInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({[name]: value},
-                  () => { this.validateField(name, value) });
-  }
+  submitHandler = event => {
+    event.preventDefault();
+    event.target.className += " was-validated";
+  };
 
-  validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
-    let emailValid = this.state.emailValid;
-    let passwordValid = this.state.passwordValid;
-
-    switch(fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-        break;
-      case 'password':
-        passwordValid = value.length >= 6;
-        fieldValidationErrors.password = passwordValid ? '': ' is too short';
-        break;
-      default:
-        break;
-    }
-    this.setState({formErrors: fieldValidationErrors,
-                    emailValid: emailValid,
-                    passwordValid: passwordValid
-                  }, this.validateForm);
-  }
-
-  validateForm() {
-    this.setState({formValid: this.state.emailValid && this.state.passwordValid});
-  }
-
-  errorClass(error) {
-    return(error.length === 0 ? '' : 'has-error');
-  }
+  changeHandler = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   render () {
     return (
        <div>
          <div>
-         <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
+          <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
          </div>
          <div>
           <form className="demoForm1">
            <img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img>
            <h5>Welcome back! Login to your account</h5><br/>
-           <div className="panel panel-default">
-             <LoginFormErrors formErrors={this.state.formErrors} />
-           </div>
-          <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-             <input type="email" required className="form-control" name="email" placeholder="Email" value={this.state.email} onChange={this.handleUserInput}/>
-           </div>
-           <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-             <input type="password" className="form-control" name="password"
-               placeholder="Password"
-              value={this.state.password}
-               onChange={this.handleUserInput}  />
-           </div>
+           <Row>
+            <Col>
+              <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email" placeholder="Email Address" value={this.state.email} onChange={this.changeHandler} required />
+            </Col>
+          </Row>
+          <br/>
+          <Row>
+            <Col>
+              <input type="password" pattern="^(?=.*\d).{4,20}$" className="form-control" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} required />
+            </Col>
+          </Row>
+          <br/>
            <div>
              <label className="remember-me"> 
              <input type="checkbox" name="remember"/>Remember Me
@@ -86,16 +52,25 @@ class Form extends Component {
              <a href="#" className="ForgotPswd">Forgot Password?</a>
            </div><br/><br/>
            <div>
-            <button type="submit" className="btn btn-danger" onClick={() => history.push('/Dashboard')} disabled={!this.state.formValid}>Login</button>
+            <button type="submit" className="btn btn-danger" onClick="logg()" /*onClick={() => history.push('/Dashboard')} disabled={!this.state.formValid}*/>Login</button>
              <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterStart')}>Sign up</button><br/><br/>
            </div><br/>
-           <p><b>Or Login With</b></p>
-           <a>
-             <img src={linkedin_icon_flat} className="linkedin-logo" alt="linkedin_icon_flat.png"></img><br/><br/><hr/>
-           </a>
-           <label> 
-             <input type="checkbox" name="remember"/>By checking this box, you agree Sudh Infosys <br/><b>Privacy Policy</b> and <b>Terms of use</b>
-           </label>
+           <div>
+              <p><b>Or Login With</b></p>
+              <a href="#">
+                <img src={linkedin_icon_flat} className="linkedin-logo" alt="linkedin_icon_flat.png"></img>
+              </a>
+            </div><hr/>
+            <Row>
+            <Col>
+              <div className="custom-control custom-checkbox pl-3">
+                <input className="custom-control-input" type="checkbox" value="" id="invalidCheck" required />
+                <label className="custom-control-label" htmlFor="invalidCheck">
+                  By checking this box, you agree Sudh Infosys <br/><b>Privacy Policy</b> and <b>Terms of use</b>
+                </label>
+              </div>
+            </Col>
+          </Row><br/>
            </form>
          </div>
        </div>
