@@ -4,6 +4,8 @@ import RegisterForm from './LoginRegister/RegisterForm';
 import RegsiterStart from './LoginRegister/RegisterStart';
 import LoginForm from './LoginRegister/LoginForm';
 import history from './history';
+import ForgotPassword from './ForgotPassword/ForgotPassword';
+// import ForgotPasswordEmailVerification from './ForgotPassword/ForgotPasswordEmailVerification';
 
 import Dashboard from './Recruiter/Dashboard';
 import ViewProfile from './Recruiter/ViewProfile';
@@ -51,6 +53,9 @@ export default class Routes extends Component{
                     <Route path="/CandidateJobs" component={CandidateJobs} />
                     <Route path="/CandidateResume" component={CandidateResume} />
                     <Route path="/CandidateSettings" component={CandidateSettings} />
+
+                    <Route path="/ForgotPassword" component={ForgotPassword} />
+                    {/* <Route path="/ForgotPasswordEmailVerification" component={ForgotPasswordEmailVerification} /> */}
 
                     
                 </Switch>

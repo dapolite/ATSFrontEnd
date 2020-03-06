@@ -31,6 +31,7 @@
     "react-sidebar": "^3.0.2",
     "react-simple-sidenav": "^1.0.1",
     "react-split-pane": "^0.1.89",
+    "reactjs-popup": "^1.5.0",
     "validate.js": "^0.13.1"
   },
   "scripts": {

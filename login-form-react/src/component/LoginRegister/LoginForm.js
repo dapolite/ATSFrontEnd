@@ -8,21 +8,27 @@ import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-class Form extends Component {
-  state = {
-    email: '',
-    password: ''
-  };
+import Popup from 'reactjs-popup';
+import forgot from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/forgot.png';
 
-  submitHandler = event => {
-    event.preventDefault();
-    event.target.className += " was-validated";
-  };
+import Modal from 'react-bootstrap/Modal'; 
+import Button from 'react-bootstrap/Button';
+
+class Form extends Component {
+  constructor(props){
+    super();
+
+    this.state = {
+      email: '',
+      password: '',
+      email1: ''
+    }
+  }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
+  
   render () {
     return (
        <div>
@@ -49,10 +55,19 @@ class Form extends Component {
              <label className="remember-me"> 
              <input type="checkbox" name="remember"/>Remember Me
              </label>
-             <a href="#" className="ForgotPswd">Forgot Password?</a>
+              <Popup trigger={<a href="#" className="ForgotPswd">Forgot Password?</a>} modal>
+                  <Modal.Dialog>
+                    <Modal.Body className="ev1">
+                    <img src={forgot} className="fpev-logo" alt="forgot.png" /><br/><br/>
+                      <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email1" placeholder="Email Address" value={this.state.email1} onChange={this.changeHandler} required />
+                      <br/>
+                      <button /*onClick={() => history.push('/ForgotPassword')}*/ type="submit" className="button1 fpev-btn" >Email Verification</button>
+                    </Modal.Body>
+                  </Modal.Dialog>
+              </Popup>
            </div><br/><br/>
            <div>
-            <button type="submit" className="btn btn-danger" onClick="logg()" /*onClick={() => history.push('/Dashboard')} disabled={!this.state.formValid}*/>Login</button>
+            <button type="submit" className="btn btn-danger" /*onClick={() => history.push('/Dashboard')} disabled={!this.state.formValid}*/>Login</button>
              <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterStart')}>Sign up</button><br/><br/>
            </div><br/>
            <div>
