@@ -20,19 +20,16 @@ class Form extends Component {
               <p>PLease Select Which Type Of User You Are</p>
               <div>
                 <div className="recruitment-logo">
-                  <img src={recruitment} alt="recruitment.png" onClick={() => history.push('/RegisterForm')}></img>
+                  <img src={recruitment} alt="recruitment.png" onClick={() => history.push('/RegisterFormRecruiter')}></img>
                   <p>Recruiter</p>
                 </div>
 
                 <div  className="man-logo">
-                  <img src={man} alt="man.png" onClick={() => history.push('/RegisterForm')}></img>
+                  <img src={man} alt="man.png" onClick={() => history.push('/RegisterFormCandidate')}></img>
                   <p>Job Seeker</p>
                 </div>
               </div><br/><br/>
-              <p>Already have an account?<span className="tab-space"><a href="/">Log In</a></span></p><hr />
-              <label> 
-                <input type="checkbox" name="remember"/>By checking this box, you agree Sudh Infosys <br/><b>Privacy Policy</b> and <b>Terms of use</b>
-              </label>
+              <p>Already have an account?<span className="tab-space"><a href="/">Log In</a></span></p>
             </form>
           </div>
         </div>

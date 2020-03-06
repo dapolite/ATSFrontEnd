@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import { FormErrors } from './RegisterFormErrors';
-import './RegisterForm.css';
+import './RegisterFormCandidate.css';
 import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
 import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
 import linkedin_icon_flat from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/linkedin_icon_flat.png';
-import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default class Form extends Component{
+export default class RegisterFormCandidate extends Component{
   state = {
     fname: '',
     lname: '',
     uname: '',
     phonenumber: '',
     dateofbirth: '',
+    city: '',
+    state: '',
+    country: '',
     email: '',
     password: '',
     cpassword: ''
@@ -80,6 +81,32 @@ export default class Form extends Component{
             <input type="date" className="form-control" name="dateofbirth" placeholder="Date Of Birth" value={this.state.dateofbirth} onChange={this.changeHandler} required />
               <div className="invalid-feedback">
                 Please Enter Your Enter Your Date Of Birth
+              </div>
+              <div className="valid-feedback">Looks good!</div>
+            </Col>
+          </Row>
+          <br/>
+          <Row>
+            <Col>
+            <input type="text" className="form-control" name="city" placeholder="City" value={this.state.city} onChange={this.changeHandler} required />
+              <div className="invalid-feedback">
+                Please Enter Your City
+              </div>
+              <div className="valid-feedback">Looks good!</div>
+            </Col>
+
+            <Col>
+            <input type="text" className="form-control" name="state" placeholder="State" value={this.state.state} onChange={this.changeHandler} required />
+              <div className="invalid-feedback">
+                Please Enter Your State
+              </div>
+              <div className="valid-feedback">Looks good!</div>
+            </Col>
+
+            <Col>
+            <input type="text" className="form-control" name="country" placeholder="Country" value={this.state.country} onChange={this.changeHandler} required />
+              <div className="invalid-feedback">
+                Please Enter Your Country
               </div>
               <div className="valid-feedback">Looks good!</div>
             </Col>

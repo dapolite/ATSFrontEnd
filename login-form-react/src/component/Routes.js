@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import RegisterForm from './LoginRegister/RegisterForm';
+import RegisterFormCandidate from './LoginRegister/RegisterFormCandidate';
 import RegsiterStart from './LoginRegister/RegisterStart';
+import RegisterFormRecruiter from './LoginRegister/RegisterFormRecruiter';
+import RegisterFormRecruiterSecondPage from './LoginRegister/RegisterFormRecruiterSecondPage';
 import LoginForm from './LoginRegister/LoginForm';
 import history from './history';
 import ForgotPassword from './ForgotPassword/ForgotPassword';
@@ -36,7 +38,8 @@ export default class Routes extends Component{
             <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={LoginForm} />
-                    <Route path="/RegisterForm" component={RegisterForm} />
+                    <Route path="/RegisterFormRecruiter" component={RegisterFormRecruiter} />
+                    <Route path="/RegisterFormRecruiterSecondPage" component={RegisterFormRecruiterSecondPage} />
                     <Route path="/RegisterStart" component={RegsiterStart} />
                     <Route path="/ViewProfile" component={ViewProfile} />
                     <Route path="/Dashboard" component={Dashboard} />
@@ -47,6 +50,7 @@ export default class Routes extends Component{
                     <Route path="/PostNewJobs" component={PostNewJobs} />
                     
                     <Route path="/ViewCandidateProfile" component={ViewCandidateProfile} />
+                    <Route path="/RegisterFormCandidate" component={RegisterFormCandidate} />
                     <Route path="/CandidateDashboard" component={CandidateDashboard} />
                     <Route path="/CandidateAppliedJobs" component={CandidateAppliedJobs} />
                     <Route path="/CandidateFavourites" component={CandidateFavourites} />

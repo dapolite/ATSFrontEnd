@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { LoginFormErrors } from './LoginFormErrors.js';
 import './LoginForm.css';
 import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
 import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
