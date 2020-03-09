@@ -7,14 +7,13 @@ import RegisterFormRecruiterSecondPage from './LoginRegister/RegisterFormRecruit
 import LoginForm from './LoginRegister/LoginForm';
 import history from './history';
 import ForgotPassword from './ForgotPassword/ForgotPassword';
-// import ForgotPasswordEmailVerification from './ForgotPassword/ForgotPasswordEmailVerification';
+import Calendars from './Calendars/Calendars';
 
 import Dashboard from './Recruiter/Dashboard';
 import ViewProfile from './Recruiter/ViewProfile';
 import ManageCandidates from './Recruiter/ManageCandidates';
 import ShortlistedCandidates from './Recruiter/ShortlistedCandidates';
 import ManageJobs from './Recruiter/ManageJobs';
-import CalendarItem from './Recruiter/CalendarItem';
 import PostNewJobs from './Recruiter/PostNewJobs';
 
 import ViewCandidateProfile from './Candidate/ViewProfile'
@@ -46,8 +45,8 @@ export default class Routes extends Component{
                     <Route path="/ManageCandidates" component={ManageCandidates} />
                     <Route path="/ShortlistedCandidates" component={ShortlistedCandidates} />
                     <Route path="/ManageJobs" component={ManageJobs} />
-                    <Route path="/CalendarItem" component={CalendarItem} />
                     <Route path="/PostNewJobs" component={PostNewJobs} />
+                    <Route path="/Calendars" component={Calendars} />
                     
                     <Route path="/ViewCandidateProfile" component={ViewCandidateProfile} />
                     <Route path="/RegisterFormCandidate" component={RegisterFormCandidate} />
@@ -59,7 +58,6 @@ export default class Routes extends Component{
                     <Route path="/CandidateSettings" component={CandidateSettings} />
 
                     <Route path="/ForgotPassword" component={ForgotPassword} />
-                    {/* <Route path="/ForgotPasswordEmailVerification" component={ForgotPasswordEmailVerification} /> */}
 
                     
                 </Switch>

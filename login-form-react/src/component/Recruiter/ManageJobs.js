@@ -3,34 +3,49 @@ import Clock from 'react-live-clock';
 import './ManageJobs.css';
 import Sidebar from './Sidebar/Sidebar';
 import Searchbar from '../Searchbar/Searchbar';
-import JobItem from '../Job/JobItem'
+import JobItem from '../Job/JobItem';
+import HeaderItems from '../Header/HeaderItems';
+
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
 export default class ManageJobs extends React.Component{
     render(){
         return(
-            <div className="row no-gutters">  
-            <Sidebar />              
-            <div className="col">
-            <div className="col container-fluid">
-            <br/>
-                <div className="row">
-                        <div className="col">
-                            <Searchbar/>
-                        </div>
-                </div>
-                <br></br>
-                <div className="row">
-                    <div className="col">
-                    <div className="card border-0">
-                        <div className="card-body">
-                            <JobItem />
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
+            <Row className="no-gutters">  
+                <Sidebar />              
+                <Col>
+                    <Col className="container-fluid">
+                        <br/>
+                        <Row>
+                            <Col>
+                                <Searchbar/>
+                            </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <HeaderItems/>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Card className="border-0">
+                                    <Card.Body>
+                                        <JobItem />
+                                        <JobItem />
+                                        <JobItem />
+                                        <JobItem />
+                                        <JobItem />
+                                        <JobItem />
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Col>
+            </Row>
         )
     }
 }

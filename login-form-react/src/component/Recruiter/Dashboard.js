@@ -6,7 +6,142 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
+import {Bar} from 'react-chartjs-2';
+import {MDBContainer} from 'mdbreact';
+
 export default class Dashboard extends React.Component{
+
+    state = {
+        dataBar:{
+            datasets:[
+                {
+                    label: "Total Candidates",
+                    data: [26],
+                    backgroundColor: [
+                        "rgba(98,  182, 239,0.4)"
+                    ],
+                    borderWidth: 2,
+                    borderColor: [
+                        "rgba(98,  182, 239,0.4)"
+                    ]
+                }
+            ]
+        },
+        barChartOptions: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes:[
+                    {
+                        barPercentage: 1,
+                        gridLines: {
+                            display: true,
+                            color: "rgba(0, 0, 0, 0.1)"
+                        }
+                    }
+                ],
+                yAxes: [
+                    {
+                        gridLines: {
+                            display: true,
+                            color: "rgba(0, 0, 0, 0.1)"
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ]
+            }
+        }
+    }
+
+    state1 = {
+        dataBar1:{
+            datasets:[
+                {
+                    label: "Total Shortlisted Candidates",
+                    data: [23],
+                    backgroundColor: [
+                        "rgba(255,255,0,0.3)"
+                    ],
+                    borderWidth: 2,
+                    borderColor: [
+                        "rgba(255,255,0,0.3)"
+                    ]
+                }
+            ]
+        },
+        barChartOptions1: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes:[
+                    {
+                        barPercentage: 1,
+                        gridLines: {
+                            display: true,
+                            color: "rgba(0, 0, 0, 0.1)"
+                        }
+                    }
+                ],
+                yAxes: [
+                    {
+                        gridLines: {
+                            display: true,
+                            color: "rgba(0, 0, 0, 0.1)"
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ]
+            }
+        }
+    }
+
+    state2 = {
+        dataBar2:{
+            datasets:[
+                {
+                    label: "Jobs Posted",
+                    data: [40],
+                    backgroundColor: [
+                        "rgba(255,0,0,0.3)"
+                    ],
+                    borderWidth: 2,
+                    borderColor: [
+                        "rgba(255,0,0,0.3)"
+                    ]
+                }
+            ]
+        },
+        barChartOptions2: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                xAxes:[
+                    {
+                        barPercentage: 1,
+                        gridLines: {
+                            display: true,
+                            color: "rgba(0, 0, 0, 0.1)"
+                        }
+                    }
+                ],
+                yAxes: [
+                    {
+                        gridLines: {
+                            display: true,
+                            color: "rgba(0, 0, 0, 0.1)"
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }
+                ]
+            }
+        }
+    }
     render(){
         return(
             <Row className="no-gutters">  
@@ -22,26 +157,29 @@ export default class Dashboard extends React.Component{
                         <br></br>
                         <Row>
                             <Col>
-                                <Card>
+                                <Card className="border-0">
                                     <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
+                                        <MDBContainer>
+                                            <Bar data={this.state.dataBar} options= {this.state.barChartOptions}/>
+                                        </MDBContainer>
                                     </Card.Body>
                                 </Card>
                             </Col>
                             <Col>
-                                <Card>
+                                <Card className="border-0">
                                     <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
+                                        <MDBContainer>
+                                            <Bar data={this.state1.dataBar1} options= {this.state1.barChartOptions1}/>
+                                        </MDBContainer>
                                     </Card.Body>
                                 </Card>
                             </Col>
                             <Col>
-                                <Card>
+                                <Card className="border-0">
                                     <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
+                                        <MDBContainer>
+                                            <Bar data={this.state2.dataBar2} options= {this.state2.barChartOptions2}/>
+                                        </MDBContainer>
                                     </Card.Body>
                                 </Card>
                             </Col>

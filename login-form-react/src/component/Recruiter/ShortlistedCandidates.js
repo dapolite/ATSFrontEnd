@@ -1,12 +1,14 @@
 import React from 'react';
 import './ShortlistedCandidates.css';
 import Sidebar from './Sidebar/Sidebar';
-import Searchbar from '../Searchbar/Searchbar';
+import Searchbar from '../Searchbar/Searchbar'
+import CandidateItem from '../CandidateItem/CandidateItem';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
-export default class ShortlistedCandidates extends React.Component{
+
+export default class ManageCandidates extends React.Component{
     render(){
         return(
             <Row className="no-gutters">  
@@ -38,7 +40,7 @@ export default class ShortlistedCandidates extends React.Component{
                                 </Card>
                             </Col>
                             <Col>
-                                <Card>
+                            <Card>
                                     <Card.Body>
                                         <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
                                         <Card.Text>content.</Card.Text>
@@ -48,11 +50,19 @@ export default class ShortlistedCandidates extends React.Component{
                         </Row>
                         <br></br> 
                         <Row>
+                            <Col className="col-3">
+                                <Card className="container">
+                                    <Card.Body></Card.Body>
+                                </Card>
+                            </Col>
                             <Col>
-                                <Card>
+                                <Card className="mc1 border-0">
                                     <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
+                                        <CandidateItem/>
+                                        <CandidateItem/>
+                                        <CandidateItem/>
+                                        <CandidateItem/>
+                                        <CandidateItem/>
                                     </Card.Body>
                                 </Card>
                             </Col>

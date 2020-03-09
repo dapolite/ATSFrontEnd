@@ -26,7 +26,7 @@ export default class Sidebar extends React.Component {
                     <div className="sidebar-link" onClick={() => history.push('/CandidateJobs')}><img src={portfolio} className="homes-img" alt="portfolio.png"></img>Jobs</div><br/>
                     <div className="sidebar-link" onClick={() => history.push('/CandidateAppliedJobs')}><img src={tickmark} className="homes-img" alt="tickmark.png"></img>Applied Jobs</div><br/>
                     <div className="sidebar-link" onClick={() => history.push('/CandidateFavourites')}><img src={favourite} className="homes-img" alt="tickmark.png"></img>Favourites</div><br/>
-                    <div className="sidebar-link" onClick={() => history.push('/Calendar')}><img src={calendar} className="homes-img" alt="calendar.png"></img>Calendar</div><br/>
+                    <div className="sidebar-link" ><img src={calendar} className="homes-img" alt="calendar.png"></img>Calendar</div><br/>
                     <div className="sidebar-link" onClick={() => history.push('/PostNewJobs')}><img src={email} className="homes-img" alt="email.png"></img>Inbox</div>
                     <hr className="line-color"></hr>
                     <div className="sidebar-link"><img src={settings} className="homes-img" alt="settings.png"></img>Settings</div><br/>

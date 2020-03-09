@@ -2,7 +2,7 @@ import React from 'react';
 import './ManageCandidates.css';
 import Sidebar from './Sidebar/Sidebar';
 import Searchbar from '../Searchbar/Searchbar'
-import CandidateItem from '../CandidateItem/CandidateItem';
+import CandidateItems from '../CandidateItems/CandidateItems';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -58,7 +58,7 @@ export default class ManageCandidates extends React.Component{
                             <Col>
                                 <Card className="mc1 border-0">
                                     <Card.Body>
-                                        <CandidateItem/>
+                                        <CandidateItems/>
                                     </Card.Body>
                                 </Card>
                             </Col>

@@ -1,8 +1,27 @@
-.clock{
-    float: right;
+.input-type-date{
+    background-color: #F8F9FA;
+    padding: 2%;
+    border: none;
+    float: left;
+    border-radius: 4px;
 }
 
-.pnj{
-    background-color: royalblue;
-    height: 100vh;
+.input-type-date1{
+    float: left;
+}
+
+::placeholder{
+    color: black;
+}
+
+.input1-1{
+    width: 45%;
+    float: left;
+    padding: 1%;
+}
+
+.input1-2{
+    width: 45%;
+    float: right;
+    padding: 1%;
 }
