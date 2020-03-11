@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
-import homes from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/homes.png';
-import user from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/user.png';
-import portfolio from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/portfolio.png';
-import calendar from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/calendar.png';
-import email from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/email.png';
-import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
-import off from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/off.png';
-import tickmark from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/tickmark.png'
-import resume from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/resume.png'
-import history from '/mnt/d/WSL-Ubuntu/login-form-react/src/component/history.js'
-import favourite from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/star.png'
-import settings from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/settings.png'
+import homes from '../homes.png';
+import user from '../user.png';
+import portfolio from '../portfolio.png';
+import calendar from '../calendar.png';
+import email from '../email.png';
+import SUDH_logo_1 from '../SUDH_logo_1.png';
+import off from '../off.png';
+import tickmark from '../tickmark.png'
+import resume from '../resume.png'
+import history from '../../history'
+import favourite from '../star.png'
+import settings from '../settings.png'
 
 export default class Sidebar extends React.Component {
     render(){

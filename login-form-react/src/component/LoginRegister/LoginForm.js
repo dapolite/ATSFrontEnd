@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './LoginForm.css';
-import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
-import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
-import linkedin_icon_flat from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/linkedin_icon_flat.png';
+import leftside from './leftside.jpg';
+import SUDH_logo_1 from './SUDH_logo_1.png';
+import linkedin_icon_flat from './linkedin_icon_flat.png';
 import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Popup from 'reactjs-popup';
-import forgot from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/forgot.png';
+import forgot from './forgot.png';
 
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';

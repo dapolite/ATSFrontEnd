@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './RegisterStart.css';
-import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
-import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
-import recruitment from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/recruitment.png';
-import man from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/man.png';
+import SUDH_logo_1 from './SUDH_logo_1.png';
+import leftside from './leftside.jpg';
+import recruitment from './recruitment.png';
+import man from './man.png';
 import history from '../history';
 
 class Form extends Component {
