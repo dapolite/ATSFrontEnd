@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './RegisterFormRecruiter.css';
-import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
-import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
+import leftside from './leftside.jpg';
+import SUDH_logo_1 from './SUDH_logo_1.png';
 import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
-import homes from '../homes.png';
-import user from '../user.png';
-import man from '../man.png';
-import tickmark from '../tickmark.png';
-import portfolio from '../portfolio.png';
-import calendar from '../calendar.png';
-import email from '../email.png';
-import SUDH_logo_1 from '../SUDH_logo_1.png';
-import off from '../off.png';
-import history from '../../history';
+import homes from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/homes.png';
+import user from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/user.png';
+import man from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/man.png';
+import tickmark from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/tickmark.png';
+import portfolio from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/portfolio.png';
+import calendar from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/calendar.png';
+import email from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/email.png';
+import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
+import off from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/off.png';
+import history from '/mnt/d/WSL-Ubuntu/login-form-react/src/component/history.js';
 
 export default class Sidebar extends React.Component {
     render(){

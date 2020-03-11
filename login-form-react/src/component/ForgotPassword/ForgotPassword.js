@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './ForgotPassword.css';
 
-import leftside from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/leftside.jpg';
-import forgot from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/forgot.png';
+import leftside from './leftside.jpg';
+import forgot from './forgot.png';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

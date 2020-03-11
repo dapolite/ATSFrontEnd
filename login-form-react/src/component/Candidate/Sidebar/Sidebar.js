@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
-import homes from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/homes.png';
-import user from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/user.png';
-import portfolio from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/portfolio.png';
-import calendar from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/calendar.png';
-import email from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/email.png';
-import SUDH_logo_1 from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/SUDH_logo_1.png';
-import off from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/off.png';
-import tickmark from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/tickmark.png'
-import resume from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/resume.png'
-import history from '/mnt/d/WSL-Ubuntu/login-form-react/src/component/history.js'
-import favourite from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/star.png'
-import settings from '/mnt/d/WSL-Ubuntu/login-form-react/src/assets/settings.png'
+import homes from '../homes.png';
+import user from '../user.png';
+import portfolio from '../portfolio.png';
+import calendar from '../calendar.png';
+import email from '../email.png';
+import SUDH_logo_1 from '../SUDH_logo_1.png';
+import off from '../off.png';
+import tickmark from '../tickmark.png'
+import resume from '../resume.png'
+import history from '../../history'
+import favourite from '../star.png'
+import settings from '../settings.png'
 
 export default class Sidebar extends React.Component {
     render(){
@@ -27,7 +27,7 @@ export default class Sidebar extends React.Component {
                     <div className="sidebar-link" onClick={() => history.push('/CandidateAppliedJobs')}><img src={tickmark} className="homes-img" alt="tickmark.png"></img>Applied Jobs</div><br/>
                     <div className="sidebar-link" onClick={() => history.push('/CandidateFavourites')}><img src={favourite} className="homes-img" alt="tickmark.png"></img>Favourites</div><br/>
                     <div className="sidebar-link" ><img src={calendar} className="homes-img" alt="calendar.png"></img>Calendar</div><br/>
-                    <div className="sidebar-link" onClick={() => history.push('/PostNewJobs')}><img src={email} className="homes-img" alt="email.png"></img>Inbox</div>
+                    <div className="sidebar-link" onClick={() => history.push('/CandidateDashboard')}><img src={email} className="homes-img" alt="email.png"></img>Inbox</div>
                     <hr className="line-color"></hr>
                     <div className="sidebar-link"><img src={settings} className="homes-img" alt="settings.png"></img>Settings</div><br/>
                     <div className="sidebar-link" onClick={() => history.push('/')}><img src={off} className="homes-img" alt="off.png"></img>Log Out</div>
