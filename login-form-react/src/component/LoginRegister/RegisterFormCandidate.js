@@ -5,9 +5,13 @@ import SUDH_logo_1 from './SUDH_logo_1.png';
 import linkedin_icon_flat from './linkedin_icon_flat.png';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from 'axios';
 
 export default class RegisterFormCandidate extends Component{
-  state = {
+  
+  constructor(props){
+    super(props);
+    this.state = {
     fname: '',
     lname: '',
     uname: '',
@@ -19,12 +23,20 @@ export default class RegisterFormCandidate extends Component{
     email: '',
     password: '',
     cpassword: ''
-  };
-
+    }
+  }
   submitHandler = event => {
     event.preventDefault();
     event.target.className += " was-validated";
-  };
+    console.log(this.state);
+    axios.post('https://jsonplaceholder.typicode.com/posts',{ mode: "no-cors" },this.state)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
