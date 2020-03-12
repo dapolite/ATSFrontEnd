@@ -27,6 +27,11 @@ class Form extends Component {
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  handleSubmit =event => {
+    history.push('/Dashboard')
+    event.preventDefault();
+  }
   
   render () {
     return (
@@ -35,7 +40,7 @@ class Form extends Component {
           <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
          </div>
          <div>
-          <form className="demoForm1">
+          <form className="demoForm1" onSubmit={this.handleSubmit}>
            <img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img>
            <h5>Welcome back! Login to your account</h5><br/>
            <Row>
@@ -55,18 +60,18 @@ class Form extends Component {
              <input type="checkbox" name="remember"/>Remember Me
              </label>
               <Popup trigger={<a href="#" className="ForgotPswd">Forgot Password?</a>} modal>
-                  <Modal.Dialog>
+                  <Modal.Dialog onSubmit={this.handleSubmit}>
                     <Modal.Body className="ev1">
                     <img src={forgot} className="fpev-logo" alt="forgot.png" /><br/><br/>
                       <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email1" placeholder="Email Address" value={this.state.email1} onChange={this.changeHandler} required />
                       <br/>
-                      <button /*onClick={() => history.push('/ForgotPassword')}*/ type="submit" className="button1 fpev-btn" >Email Verification</button>
+                      <button onClick={() => history.push('/ForgotPassword')} type="submit" className="button1 fpev-btn" >Email Verification</button>
                     </Modal.Body>
                   </Modal.Dialog>
               </Popup>
            </div><br/><br/>
            <div>
-            <button type="submit" className="btn btn-danger" onClick={() => history.push('/Dashboard')} /*disabled={!this.state.formValid}*/>Login</button>
+            <button type="submit" className="btn btn-danger">Login</button>
              <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterStart')}>Sign up</button><br/><br/>
            </div><br/>
            <div>
@@ -74,17 +79,7 @@ class Form extends Component {
               <a href="#">
                 <img src={linkedin_icon_flat} className="linkedin-logo" alt="linkedin_icon_flat.png"></img>
               </a>
-            </div><hr/>
-            <Row>
-            <Col>
-              <div className="custom-control custom-checkbox pl-3">
-                <input className="custom-control-input" type="checkbox" value="" id="invalidCheck" required />
-                <label className="custom-control-label" htmlFor="invalidCheck">
-                  By checking this box, you agree Sudh Infosys <br/><b>Privacy Policy</b> and <b>Terms of use</b>
-                </label>
-              </div>
-            </Col>
-          </Row><br/>
+            </div><br/>
            </form>
          </div>
        </div>

@@ -6,9 +6,15 @@ import forgot from './forgot.png';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import history from '../history';
 
 
 export default class ForgotPassword extends Component {
+
+  handleSubmit =event => {
+    history.push('/Dashboard')
+    event.preventDefault();
+  }
   
   render () {
     return (
@@ -17,7 +23,7 @@ export default class ForgotPassword extends Component {
           <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
          </div>
          <div>
-          <form className="fp-form">
+          <form className="fp-form" onSubmit={this.handleSubmit}>
             <img src={forgot} className="fp-logo" alt="forgot.png" /><br/><br/>
             <h5>RESET PASSWORD !</h5>
             <br/>
