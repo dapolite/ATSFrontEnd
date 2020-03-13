@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import RegisterFormCandidate from './LoginRegister/RegisterFormCandidate';
 import RegsiterStart from './LoginRegister/RegisterStart';
+import LoginStart from './LoginRegister/LoginStart';
 import RegisterFormRecruiter from './LoginRegister/RegisterFormRecruiter';
 import RegisterFormRecruiterSecondPage from './LoginRegister/RegisterFormRecruiterSecondPage';
 import LoginForm from './LoginRegister/LoginForm';
@@ -36,7 +37,8 @@ export default class Routes extends Component{
         return(
             <Router history={history}>
                 <Switch>
-                    <Route path="/" exact component={LoginForm} />
+                    <Route path="/" exact component={LoginStart} />
+                    <Route path="/LoginForm" component={LoginForm} />
                     <Route path="/RegisterFormRecruiter" component={RegisterFormRecruiter} />
                     <Route path="/RegisterFormRecruiterSecondPage" component={RegisterFormRecruiterSecondPage} />
                     <Route path="/RegisterStart" component={RegsiterStart} />
