@@ -1,0 +1,19 @@
+.inbox-page-full1{
+    padding: 2%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.btn-primary-outline{
+    background-color: transparent;
+}
+
+.second-card{
+    width: 90%;
+    float: right;
+    overflow: auto;
+}
+
+.first-card{
+    width: 200px;
+}

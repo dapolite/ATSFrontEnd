@@ -24,6 +24,14 @@ import CandidateFavourites from './Candidate/Favourites'
 import CandidateJobs from './Candidate/Jobs'
 import CandidateResume from './Candidate/Resume'
 import CandidateSettings from './Candidate/Settings'
+import CandidateInbox from './Candidate/Inbox'
+import CandidateInboxdata from './Candidate/Inboxdata/Inboxdata';
+import CandidateSentdata from './Candidate/Sentdata/Sentdata';
+import CandidateDraftsdata from './Candidate/Draftsdata/Draftsdata';
+import CandidateTrashdata from './Candidate/Trashdata/Trashdata';
+import CandidateImportantdata from './Candidate/Importantdata/Importantdata';
+import CandidateSpamdata from './Candidate/Spamdata/Spamdata';
+import CandidateStarreddata from './Candidate/Starreddata/Starreddata';
 
 import AdminDashboard from './Admin/Dashboard'
 import CandidateList from './Admin/CandidateList'
@@ -58,6 +66,14 @@ export default class Routes extends Component{
                     <Route path="/CandidateJobs" component={CandidateJobs} />
                     <Route path="/CandidateResume" component={CandidateResume} />
                     <Route path="/CandidateSettings" component={CandidateSettings} />
+                    <Route path="/CandidateInbox" component={CandidateInbox} />
+                    <Route path="/CandidateInboxdata" component={CandidateInboxdata} />
+                    <Route path="/CandidateSentdata" component={CandidateSentdata} />
+                    <Route path="/CandidateDraftsdata" component={CandidateDraftsdata} />
+                    <Route path="/CandidateTrashdata" component={CandidateTrashdata} />
+                    <Route path="/CandidateImportantdata" component={CandidateImportantdata} />
+                    <Route path="/CandidateSpamdata" component={CandidateSpamdata} />
+                    <Route path="/CandidateStarreddata" component={CandidateStarreddata} />
 
                     <Route path="/ForgotPassword" component={ForgotPassword} />
 

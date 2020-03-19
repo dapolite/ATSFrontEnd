@@ -29,7 +29,7 @@ class Form extends Component {
   };
 
   handleSubmit =event => {
-    history.push('/Dashboard')
+    history.push('/CandidateDashboard')
     event.preventDefault();
   }
   

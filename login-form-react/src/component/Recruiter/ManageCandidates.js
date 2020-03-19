@@ -5,6 +5,8 @@ import Searchbar from '../Searchbar/Searchbar'
 import CandidateItems from '../CandidateItems/CandidateItems';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 
 
@@ -52,7 +54,91 @@ export default class ManageCandidates extends React.Component{
                         <Row>
                             <Col className="col-3">
                                 <Card className="container">
-                                    <Card.Body></Card.Body>
+                                    <Card.Body>
+                                        <Dropdown>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton className="mcfilters" variant="light" id="dropdown-item-button" title="Category">
+                                                        <Dropdown.Item as="button">Action</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Another action</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Something else</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col>
+                                            </Row>
+                                            <br/>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton variant="light" id="dropdown-item-button" title="Location">
+                                                        <Dropdown.Item as="button">Part Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Full Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Temperory</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Permanent</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Freelance</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col> 
+                                            </Row>
+                                            <br/>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton variant="light" id="dropdown-item-button" title="Experience">
+                                                        <Dropdown.Item as="button">Part Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Full Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Temperory</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Permanent</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Freelance</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col> 
+                                            </Row>
+                                            <br/>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton variant="light" id="dropdown-item-button" title="Gender">
+                                                        <Dropdown.Item as="button">Part Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Full Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Temperory</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Permanent</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Freelance</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col> 
+                                            </Row>
+                                            <br/>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton variant="light" id="dropdown-item-button" title="Job Type">
+                                                        <Dropdown.Item as="button">Part Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Full Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Temperory</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Permanent</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Freelance</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col> 
+                                            </Row>  
+                                            <br/>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton variant="light" id="dropdown-item-button" title="Skills">
+                                                        <Dropdown.Item as="button">Part Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Full Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Temperory</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Permanent</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Freelance</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col> 
+                                            </Row>
+                                            <br/>
+                                            <Row>
+                                                <Col>
+                                                    <DropdownButton variant="light" id="dropdown-item-button" title="Qualification">
+                                                        <Dropdown.Item as="button">Part Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Full Time</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Temperory</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Permanent</Dropdown.Item>
+                                                        <Dropdown.Item as="button">Freelance</Dropdown.Item>
+                                                    </DropdownButton>
+                                                </Col> 
+                                            </Row>    
+                                        </Dropdown>
+                                    </Card.Body>
                                 </Card>
                             </Col>
                             <Col>
