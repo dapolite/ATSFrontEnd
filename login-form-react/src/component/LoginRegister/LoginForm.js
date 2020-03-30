@@ -29,7 +29,7 @@ class Form extends Component {
   };
 
   handleSubmit =event => {
-    history.push('/CandidateDashboard')
+    history.push('/Dashboard')
     event.preventDefault();
   }
   
@@ -88,3 +88,6 @@ class Form extends Component {
 }
 
 export default Form;
+
+
+// TODO: Job Duration Field in POST NEW JOBS (FRONTEND)

@@ -72,7 +72,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input12" placeholder="Please enter your address"></input>
+                                    <textarea className="input1" placeholder="Please enter your address"></textarea>
                                 </div>
                             </Col>
                         </Row>

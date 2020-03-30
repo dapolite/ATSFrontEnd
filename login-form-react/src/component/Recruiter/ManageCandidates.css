@@ -1,31 +1,11 @@
-/* .clock{
-    float: right;
-}
-
-
-.tbody {
-    display: table-row-group;
-    border-color: inherit;
-}
-
-.table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
-}
-
-.content-wrapper{
-    width:100%;
-} */
-
-/* .card-body{
-    border: none;
-} */
-
 .mc1{
     width: 100%;
 }
 
 .mc2{
     width: 50%;
+}
+
+.dropdown-menu {
+    margin-right: 5%;
 }
