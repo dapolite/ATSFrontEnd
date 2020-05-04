@@ -5,29 +5,62 @@ import SUDH_logo_1 from './SUDH_logo_1.png';
 import linkedin_icon_flat from './linkedin_icon_flat.png';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import axios from 'axios';
 import history from '../history';
 
 export default class RegisterFormRecruiter extends Component{
-    state = {
+    constructor(props){
+      super(props);
+      this.state = {
         companyname: '',
-        companydescription: '',
+        companydesc: '',
         companyestdate: '',
         companywebsite: '',
-        companylogo: '',
+        companypic: '',
         companyaddress: ''
       };
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.changeHandler = this.changeHandler.bind(this);
+    }
+
+    changeHandler = event => {
+      this.setState({ [event.target.name]: event.target.value });
+    };
     
       handleSubmit =event => {
-        history.push('/Dashboard')
-        event.preventDefault();
+
+        const recruiter = {
+          companyname: this.state.companyname,
+          companydesc:this.state.companydesc,
+          companyestdate:this.state.companyestdate,
+          companywebsite:this.state.companywebsite,
+          companypic:this.state.companypic,
+          companyaddress:this.state.companyaddress
+        };
+
+        const config = {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
+
+        axios.post("http://localhost:8080/api/Recruiter",recruiter,config)
+        .then(res => {
+        if(res.data!=null){
+          console.log(res.data);
+          console.log(recruiter);
+          console.log(res);
+          alert("Rec Added");
+          alert(recruiter);
+        }
+      })
+
+      history.push('/Dashboard');
+      event.preventDefault();
       }
     
-      changeHandler = event => {
-        this.setState({ [event.target.name]: event.target.value });
-      };
-    
       render(){
+        const {companyname,companydesc,companyestdate,companywebsite,companypic,companyaddress}=this.state
         return(
           <div>
             <div>
@@ -39,7 +72,7 @@ export default class RegisterFormRecruiter extends Component{
               <h5 class="h5" align="center">Please complete to create your account</h5><br></br>
               <Row>
                 <Col>
-                  <input type="text" className="form-control" name="companyname" placeholder="Company Name" value={this.state.companyname} onChange={this.changeHandler} required />
+                  <input type="text" className="form-control" name="companyname" placeholder="Company Name" value={companyname} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your Company Name
                   </div>
@@ -49,7 +82,7 @@ export default class RegisterFormRecruiter extends Component{
               <br/>
               <Row>
                 <Col>
-                  <input type="text" className="form-control" name="companyestdate" placeholder="Company Establishment Date" value={this.state.companyestdate} onChange={this.changeHandler} required />
+                  <input type="date" className="form-control" name="companyestdate" placeholder="Company Establishment Date" value={companyestdate} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your Company's Established Date
                   </div>
@@ -57,7 +90,7 @@ export default class RegisterFormRecruiter extends Component{
                 </Col>
 
                 <Col>
-                <input type="url" className="form-control" name="companywebsite" placeholder="https://www.xxx.xxx" value={this.state.companywebsite} onChange={this.changeHandler} required />
+                <input type="url" className="form-control" name="companywebsite" placeholder="https://www.xxx.xxx" value={companywebsite} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your Company's Website
                   </div>
@@ -67,7 +100,7 @@ export default class RegisterFormRecruiter extends Component{
               <br/>
               <Row>
                 <Col>
-                  <textarea rows="5" type="text" className="form-control" name="companydescription" placeholder="Company Description" value={this.state.companydescription} onChange={this.changeHandler} required />
+                  <textarea rows="5" type="text" className="form-control" name="companydesc" placeholder="Company Description" value={companydesc} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your Company Description
                   </div>
@@ -77,7 +110,7 @@ export default class RegisterFormRecruiter extends Component{
               <br/>
               <Row>
                 <Col>
-                  <textarea rows="5" type="text" className="form-control" name="companyaddress" placeholder="Company Address" value={this.state.companyaddress} onChange={this.changeHandler} required />
+                  <textarea rows="5" type="text" className="form-control" name="companyaddress" placeholder="Company Address" value={companyaddress} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your Company's Address
                   </div>

@@ -20,12 +20,12 @@ class Form extends Component {
               <p>PLease Select Which Type Of User You Are</p>
               <div>
                 <div className="recruitment-logo">
-                  <img src={recruitment} alt="recruitment.png" onClick={() => history.push('/LoginForm')}></img>
+                  <img src={recruitment} alt="recruitment.png" onClick={() => history.push('/LoginFormRecruiter')}></img>
                   <p>Recruiter</p>
                 </div>
 
                 <div  className="man-logo">
-                  <img src={man} alt="man.png" onClick={() => history.push('/LoginForm')}></img>
+                  <img src={man} alt="man.png" onClick={() => history.push('/LoginFormJobSeeker')}></img>
                   <p>Job Seeker</p>
                 </div>
               </div>

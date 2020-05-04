@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './LoginForm.css';
+import './LoginFormJobSeeker.css';
 import leftside from './leftside.jpg';
 import SUDH_logo_1 from './SUDH_logo_1.png';
 import linkedin_icon_flat from './linkedin_icon_flat.png';
@@ -29,7 +29,7 @@ class Form extends Component {
   };
 
   handleSubmit =event => {
-    history.push('/Dashboard')
+    history.push('/CandidateDashboard')
     event.preventDefault();
   }
   
@@ -72,7 +72,7 @@ class Form extends Component {
            </div><br/><br/>
            <div>
             <button type="submit" className="btn btn-danger">Login</button>
-             <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterStart')}>Sign up</button><br/><br/>
+             <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterFormCandidate')}>Sign up</button><br/><br/>
            </div><br/>
            <div>
               <p><b>Or Login With</b></p>
@@ -88,6 +88,3 @@ class Form extends Component {
 }
 
 export default Form;
-
-
-// TODO: Job Duration Field in POST NEW JOBS (FRONTEND)

@@ -14,10 +14,10 @@ export default class RegisterFormRecruiter extends Component{
     this.state = {
       firstname: '',
       lastname: '',
-      user_name: '',
+      userName: '',
       phoneno: '',
-      dateofbirth: '',
-      email: '',
+      dob: '',
+      email: '',  
       password: '',
       cpassword: ''
     };
@@ -29,26 +29,35 @@ export default class RegisterFormRecruiter extends Component{
       this.setState({ [event.target.name]: event.target.value });
     };
 
-  handleSubmit =event => {
+  handleSubmit = event => {
         
-      const recruiter = {
-        firstname: this.state.firstname,
-        lastname:this.state.lastname,
-        user_name:this.state.user_name,
-        phoneno:this.state.phoneno,
-        dateofbirth:this.state.dateofbirth,
-        email:this.state.email,
-        password:this.state.password
-      };
+      const {password,cpassword} = this.state;
 
-      const config = {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      };
+      if(password !== cpassword)
+      {
+        alert("Passwords don't match");
+      }
+      else
+      {
+        history.push('/RegisterFormRecruiterSecondPage');
+        const recruiter = {
+          firstname: this.state.firstname,
+          lastname:this.state.lastname,
+          userName:this.state.userName,
+          phoneno:this.state.phoneno,
+          dob:this.state.dob,
+          email:this.state.email,
+          password:this.state.password
+        };
+  
+        const config = {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        };
 
-      axios.post("http://localhost:8080/api/Recruiter",recruiter,config)
-      .then(res => {
+        axios.post("http://localhost:8080/api/Recruiter",recruiter,config)
+        .then(res => {
         if(res.data!=null){
           console.log(res.data);
           console.log(recruiter);
@@ -56,27 +65,25 @@ export default class RegisterFormRecruiter extends Component{
           alert("Rec Added");
           alert(recruiter);
         }
-
       })
-      
+      }
       event.preventDefault();
-      //history.push('/RegisterFormRecruiterSecondPage')
     }
   
     
     render(){
-        const {firstname,lastname,user_name,phoneno,dateofbirth,email,password}=this.state
+        const {firstname,lastname,userName,phoneno,dob,email,password}=this.state
         return(
           <div>
             <div>
               <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
             </div>
             <div>
-            <form className="needs-validation demoForm1" onSubmit={this.handleSubmit}>
+            <form className="needs-validation demoForm1" id="regForm" onSubmit={this.handleSubmit}>
               <img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img>
               <h5 class="h5" align="center">Please complete to create your account</h5><br></br>
               <Row>
-                <Col>
+                <Col> 
                   <input type="text" className="form-control" name="firstname" placeholder="First Name" value={firstname} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your First Name
@@ -95,7 +102,7 @@ export default class RegisterFormRecruiter extends Component{
               <br/>
               <Row>
                 <Col>
-                  <input type="text" className="form-control" name="user_name" placeholder="Username" value={user_name} onChange={this.changeHandler} required />
+                  <input type="text" className="form-control" name="userName" placeholder="User Name" value={userName} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your User Name
                   </div>
@@ -113,7 +120,7 @@ export default class RegisterFormRecruiter extends Component{
                 </Col>
     
                 <Col>
-                <input type="date" className="form-control" name="dateofbirth" placeholder="Date Of Birth" value={dateofbirth} onChange={this.changeHandler} required />
+                <input type="date" className="form-control" name="dob" placeholder="Date Of Birth" value={dob} onChange={this.changeHandler} required />
                   <div className="invalid-feedback">
                     Please Enter Your Enter Your Date Of Birth
                   </div>
@@ -151,8 +158,7 @@ export default class RegisterFormRecruiter extends Component{
                 </Col>
               </Row>
               <br/>
-    
-              <button type="submit" className="button1">Next</button><br/><br/>
+              <button type="submit" id="nextBtn" className="button1">Next</button>
             </form>
             </div>
           </div>
