@@ -98,9 +98,6 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="google.com/username"></input>
-                                </div><br/><br/><br/>
-                                <div className="resume2">
                                     <input className="input1" placeholder="linkedin.com/username"></input>
                                 </div><br/><br/><br/>
                                 <div className="resume2">
@@ -115,7 +112,7 @@ export default class ViewProfile extends React.Component{
                         <Row>
                             <Col>
                                 <div className="resume1">
-                                    <input className="input13" placeholder="Currenty Password" readOnly></input>
+                                    <input className="input13" placeholder="Current Password" readOnly></input>
                                 </div>
                                 
                                 <div className="resume2">

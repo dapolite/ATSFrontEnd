@@ -13,101 +13,152 @@ export default class RegisterFormCandidate extends Component{
   constructor(props){
     super(props);
     this.state = {
-    fname: '',
-    lname: '',
-    uname: '',
-    phonenumber: '',
-    dateofbirth: '',
-    city: '',
-    state: '',
-    country: '',
+    candidate_fname: '',
+    candidate_lname: '',
+    candidate_address: '',
+    candidate_about: '',
+    candidate_profpic: '',
+    userName: '',
+    phoneno: '',
+    dob: '',
+    candidateloc_city: '',
+    candidateloc_state: '',
+    candidateloc_country: '',
     email: '',
     password: '',
     cpassword: ''
-    }
+    };
+    this.handleSubmit=this.handleSubmit.bind(this);
+    this.changeHandler=this.changeHandler.bind(this);
   }
-
-  // submitHandler = event => {
-  //   event.preventDefault();
-  //   event.target.className += " was-validated";
-  //   console.log(this.state);
-  //   axios.post('https://jsonplaceholder.typicode.com/posts',{ mode: "no-cors" },this.state)
-  //   .then(response => {
-  //     console.log(response)
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit =event => {
-    history.push('/CandidateDashboard')
+  handleSubmit = event => {
+        
+    const {password,cpassword} = this.state;
+
+    if(password !== cpassword)
+    {
+      alert("Passwords don't match");
+    }
+    else
+    {
+      history.push('/LoginFormJobSeeker');
+      const candidate = {
+        candidate_fname : this.state.candidate_fname,
+        candidate_lname : this.state.candidate_lname,
+        candidate_address : this.state.candidate_address,
+        candidate_about : this.state.candidate_about,
+        candidate_profpic : this.state.candidate_profpic,
+        userName : this.state.userName,
+        phoneno : this.state.phoneno,
+        dob : this.state.dob,
+        candidateloc_city : this.state.candidateloc_city,
+        candidateloc_state : this.state.candidateloc_state,
+        candidateloc_country : this.state.candidateloc_country,
+        email : this.state.email,
+        password : this.state.password
+      };
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      };
+
+      axios.post("http://localhost:8080/api/candidates",candidate,config)
+      .then(res => {
+      if(res.data!=null){
+        console.log(res.data);
+        console.log(candidate);
+        console.log(res);
+        alert("Candidate Added");
+        alert(candidate);
+      }
+    })
+    }
     event.preventDefault();
   }
 
   render(){
+    const {candidate_fname,candidate_lname,candidate_address,candidate_about,candidate_profpic,userName,phoneno,dob,candidateloc_city,candidateloc_state,candidateloc_country,email,password}=this.state
     return(
       <div>
         <div>
           <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
         </div>
         <div>
-        <form className="needs-validation demoForm1" onSubmit={this.handleSubmit}>
+        <form className="needs-validation demoForm1" id="regForm" onSubmit={this.handleSubmit}>
           <img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img>
           <h5 class="h5" align="center">Please complete to create your account</h5><br></br>
           <Row>
+            <p>Upload Your Profile Picture:</p>
+          </Row>
+          <br/>
+          <Row>
             <Col>
-              <input type="text" className="form-control" name="fname" placeholder="First Name" value={this.state.fname} onChange={this.changeHandler} required />
+              <input type="text" className="form-control" name="candidate_fname" placeholder="First Name" value={candidate_fname} onChange={this.changeHandler} required />
             </Col>
 
             <Col>
-              <input type="text" className="form-control" name="lname" placeholder="Last Name" value={this.state.lname} onChange={this.changeHandler} required />
+              <input type="text" className="form-control" name="candidate_lname" placeholder="Last Name" value={candidate_lname} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
           <Row>
             <Col>
-              <input type="text" className="form-control" name="uname" placeholder="Username" value={this.state.uname} onChange={this.changeHandler} required />
+              <input type="text" className="form-control" name="userName" placeholder="Username" value={userName} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
           <Row>
             <Col>
-            <input type="tel" pattern="[0-9]{5}[0-9]{5}" className="form-control" name="phonenumber" placeholder="Phone Number" value={this.state.phonenumber} onChange={this.changeHandler} required />
+              <textarea type="text" className="form-control" name="candidate_address" placeholder="Address" value={candidate_address} onChange={this.changeHandler} required />
+            </Col>
+          </Row>
+          <br/>
+          <Row>
+            <Col>
+              <textarea type="text" className="form-control" name="candidate_about" placeholder="About" value={candidate_about} onChange={this.changeHandler} required />
+            </Col>
+          </Row>
+          <br/>
+          <Row>
+            <Col>
+            <input type="tel" pattern="[0-9]{5}[0-9]{5}" className="form-control" name="phoneno" placeholder="Phone Number" value={phoneno} onChange={this.changeHandler} required />
             </Col>
 
             <Col>
-            <input type="date" className="form-control" name="dateofbirth" placeholder="Date Of Birth" value={this.state.dateofbirth} onChange={this.changeHandler} required />
+            <input type="date" className="form-control" name="dob" placeholder="Date Of Birth" value={dob} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
           <Row>
             <Col>
-            <input type="text" className="form-control" name="city" placeholder="City" value={this.state.city} onChange={this.changeHandler} required />
+            <input type="text" className="form-control" name="candidateloc_city" placeholder="City" value={candidateloc_city} onChange={this.changeHandler} required />
             </Col>
 
             <Col>
-            <input type="text" className="form-control" name="state" placeholder="State" value={this.state.state} onChange={this.changeHandler} required />
+            <input type="text" className="form-control" name="candidateloc_state" placeholder="State" value={candidateloc_state} onChange={this.changeHandler} required />
             </Col>
 
             <Col>
-            <input type="text" className="form-control" name="country" placeholder="Country" value={this.state.country} onChange={this.changeHandler} required />
+            <input type="text" className="form-control" name="candidateloc_country" placeholder="Country" value={candidateloc_country} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
           <Row>
             <Col>
-              <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email" placeholder="Email Address" value={this.state.email} onChange={this.changeHandler} required />
+              <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email" placeholder="Email Address" value={email} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
           <Row>
             <Col>
-              <input type="password" className="form-control" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} required />
+              <input type="password" className="form-control" name="password" placeholder="Password" value={password} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>

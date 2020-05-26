@@ -79,7 +79,7 @@ export default class RegisterFormRecruiter extends Component{
               <img src={leftside} className="leftside-logo" alt="leftside.jpg"></img>
             </div>
             <div>
-            <form className="needs-validation demoForm1" id="regForm" onSubmit={this.handleSubmit}>
+            <form className="needs-validation demoFormrfr" onSubmit={this.handleSubmit}>
               <img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img>
               <h5 class="h5" align="center">Please complete to create your account</h5><br></br>
               <Row>

@@ -6,7 +6,7 @@ import linkedin_icon_flat from './linkedin_icon_flat.png';
 import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import axios from 'axios';
 import Popup from 'reactjs-popup';
 import forgot from './forgot.png';
 
@@ -28,7 +28,13 @@ class Form extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit =event => {
+  handleSubmit = event => {
+
+    axios.get("http://localhost:8080/api/Recruiter")
+    .then(res => {
+      
+    })
+
     history.push('/Dashboard')
     event.preventDefault();
   }
@@ -88,6 +94,3 @@ class Form extends Component {
 }
 
 export default Form;
-
-
-// TODO: Job Duration Field in POST NEW JOBS (FRONTEND)

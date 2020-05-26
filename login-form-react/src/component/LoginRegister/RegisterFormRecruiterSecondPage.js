@@ -29,7 +29,7 @@ export default class RegisterFormRecruiter extends Component{
     
       handleSubmit =event => {
 
-        const recruiter = {
+        const company = {
           companyname: this.state.companyname,
           companydesc:this.state.companydesc,
           companyestdate:this.state.companyestdate,
@@ -44,18 +44,18 @@ export default class RegisterFormRecruiter extends Component{
           }
         };
 
-        axios.post("http://localhost:8080/api/Recruiter",recruiter,config)
+        axios.post("http://localhost:8080/api/companydetails",company,config)
         .then(res => {
         if(res.data!=null){
           console.log(res.data);
-          console.log(recruiter);
+          console.log(company);
           console.log(res);
-          alert("Rec Added");
-          alert(recruiter);
+          alert("Company Added");
+          alert(company);
         }
       })
 
-      history.push('/Dashboard');
+      history.push('/LoginFormRecruiter');
       event.preventDefault();
       }
     
