@@ -6,7 +6,7 @@ import linkedin_icon_flat from './linkedin_icon_flat.png';
 import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import axios from 'axios'
 import Popup from 'reactjs-popup';
 import forgot from './forgot.png';
 
@@ -20,8 +20,8 @@ class Form extends Component {
     this.state = {
       email: '',
       password: '',
-      email1: ''
-    }
+      email1: '',
+    };
   }
 
   changeHandler = event => {
@@ -29,8 +29,31 @@ class Form extends Component {
   };
 
   handleSubmit =event => {
-    history.push('/CandidateDashboard')
     event.preventDefault();
+    axios.get('http://localhost:8080/api/candidates/candidatelist')
+    .then((res) => {
+      console.log(res.data);
+      const user = res.data.username;
+      const uid = res.data.userId;
+      const password = res.data.password;
+      console.log(user,password);
+      const username = this.state.email;
+      const passwordEntered = this.state.password;
+      if(username === '' && passwordEntered === ''){
+        document.getElementById('status').innerHTML = '<p>Please Enter A Valid Username and Password</p>';
+      }else if(user === username && passwordEntered === password){
+        document.getElementById('status').innerHTML = '';
+        sessionStorage.setItem('UserName', this.state.email);
+        sessionStorage.setItem('UserId', uid);
+        history.push('/CandidateDashboard')
+        console.log(user, password)
+      }else{
+          document.getElementById('status').innerHTML = '<p>Please Enter A Valid Username and Password</p>';
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
   
   render () {
@@ -45,7 +68,7 @@ class Form extends Component {
            <h5>Welcome back! Login to your account</h5><br/>
            <Row>
             <Col>
-              <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email" placeholder="Email Address" value={this.state.email} onChange={this.changeHandler} required />
+              <input type="text"  className="form-control" name="email" placeholder="Email Address" value={this.state.email} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
@@ -71,6 +94,7 @@ class Form extends Component {
               </Popup>
            </div><br/><br/>
            <div>
+           <p id="status"></p>
             <button type="submit" className="btn btn-danger">Login</button>
              <button type="submit" className="btn btn-outline-danger" onClick={() => history.push('/RegisterFormCandidate')}>Sign up</button><br/><br/>
            </div><br/>

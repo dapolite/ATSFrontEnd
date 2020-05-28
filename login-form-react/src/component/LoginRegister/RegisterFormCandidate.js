@@ -18,7 +18,7 @@ export default class RegisterFormCandidate extends Component{
     candidate_address: '',
     candidate_about: '',
     candidate_profpic: '',
-    userName: '',
+    username: '',
     phoneno: '',
     dob: '',
     candidateloc_city: '',
@@ -46,14 +46,14 @@ export default class RegisterFormCandidate extends Component{
     }
     else
     {
-      history.push('/LoginFormJobSeeker');
+      
       const candidate = {
         candidate_fname : this.state.candidate_fname,
         candidate_lname : this.state.candidate_lname,
         candidate_address : this.state.candidate_address,
         candidate_about : this.state.candidate_about,
         candidate_profpic : this.state.candidate_profpic,
-        userName : this.state.userName,
+        username : this.state.username,
         phoneno : this.state.phoneno,
         dob : this.state.dob,
         candidateloc_city : this.state.candidateloc_city,
@@ -77,6 +77,7 @@ export default class RegisterFormCandidate extends Component{
         console.log(res);
         alert("Candidate Added");
         alert(candidate);
+        history.push('/LoginFormJobSeeker');
       }
     })
     }
@@ -84,7 +85,7 @@ export default class RegisterFormCandidate extends Component{
   }
 
   render(){
-    const {candidate_fname,candidate_lname,candidate_address,candidate_about,candidate_profpic,userName,phoneno,dob,candidateloc_city,candidateloc_state,candidateloc_country,email,password}=this.state
+    const {candidate_fname,candidate_lname,candidate_address,candidate_about,candidate_profpic,username,phoneno,dob,candidateloc_city,candidateloc_state,candidateloc_country,email,password}=this.state
     return(
       <div>
         <div>
@@ -110,7 +111,7 @@ export default class RegisterFormCandidate extends Component{
           <br/>
           <Row>
             <Col>
-              <input type="text" className="form-control" name="userName" placeholder="Username" value={userName} onChange={this.changeHandler} required />
+              <input type="text" className="form-control" name="username" placeholder="Username" value={username} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
