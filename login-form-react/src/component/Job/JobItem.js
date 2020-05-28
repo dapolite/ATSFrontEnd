@@ -32,21 +32,14 @@ export default class JobItem extends React.Component{
             </Col>
             <Row>
             <Row>
-                <Col>
-                    <Row className="itemjb">
-                        <p className="col-spaced12">Applied</p>
-                    </Row>
-                </Col>
-            </Row>
-            <Row>
-                <Col className="itemjb">
+                <Col md="auto" className="itemjb">
                     <Row>
                         <p className="col-spaced12">16 September 2020</p>
                     </Row>
                 </Col>
             </Row>
             <Row>
-                <Col className="itemjb">
+                <Col md="auto" className="itemjb">
                     <Row>
                         <p className="col-spaced12">Active</p>
                     </Row>
@@ -54,9 +47,6 @@ export default class JobItem extends React.Component{
             </Row>
             </Row>
             <Row className="itemjb">
-                <Col>
-                <a href="#" className="download col-spacedjb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></a>
-                </Col>
                 <Col>
                 <a href="#" class="inbox"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
                 </Col>

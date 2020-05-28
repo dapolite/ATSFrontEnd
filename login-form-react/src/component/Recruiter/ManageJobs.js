@@ -23,12 +23,6 @@ export default class ManageJobs extends React.Component{
                                 <Searchbar/>
                             </Col>
                         </Row>
-                        <br/>
-                        <Row>
-                            <Col>
-                                <HeaderItems/>
-                            </Col>
-                        </Row>
                         <Row>
                             <Col>
                                 <Card className="border-0">

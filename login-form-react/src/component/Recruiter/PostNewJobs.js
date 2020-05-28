@@ -68,14 +68,8 @@ export default class PostNewJobs extends React.Component{
                                                     <Dropdown.Item as="button">4 Years</Dropdown.Item>
                                                     <Dropdown.Item as="button">Over 5 Years</Dropdown.Item>
                                                 </DropdownButton>
-                                            </Col> 
-
-                                            <Col>
-                                                <input type="number" className="input-type-date" placeholder="Salary Range" />
                                             </Col>
-                                        </Row>
-                                        <br/>
-                                        <Row>
+
                                             <Col>
                                                 <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Qualification">
                                                     <Dropdown.Item as="button">Matriculation</Dropdown.Item>
@@ -83,26 +77,11 @@ export default class PostNewJobs extends React.Component{
                                                     <Dropdown.Item as="button">Graduate</Dropdown.Item>
                                                 </DropdownButton>
                                             </Col>
-
-                                            <Col>
-                                                <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Gender">
-                                                    <Dropdown.Item as="button">Male</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Female</Dropdown.Item>
-                                                </DropdownButton>
-                                            </Col>
                                         </Row>
                                         <br/>
                                         <Row>
                                             <Col>
-                                                <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Vacancy">
-                                                    <Dropdown.Item as="button">Action</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Something else</Dropdown.Item>
-                                                </DropdownButton>
-                                            </Col>
-
-                                            <Col>
-                                                <input type="date" className="input-type-date"/>
+                                                <input type="date" className="input-type-date" placeholder="" />
                                             </Col> 
                                         </Row>
                                         <br/>
@@ -118,7 +97,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input12" placeholder=""></input>
+                                    <input className="input1" placeholder="Your Job Description Here"></input>
                                 </div>
                             </Col>
                         </Row>
@@ -130,11 +109,11 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input12" placeholder=""></input>
+                                    <input className="input1" placeholder="Your Responsibilities Here"></input>
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        {/* <br/><br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -142,11 +121,11 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input12" placeholder=""></input>
+                                    <input className="input1" placeholder=""></input>
                                 </div>
                             </Col>
-                        </Row>
-                        <br/><br/>
+                        </Row>*/}
+                        <br/><br/> 
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -154,7 +133,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input12" placeholder=""></input>
+                                    <input className="input1" placeholder="Your Other Benefits Here"></input>
                                 </div>
                             </Col>
                         </Row>
@@ -168,7 +147,7 @@ export default class PostNewJobs extends React.Component{
                                 <div className="resume2">
                                     <input className="input1-1" placeholder="Company Name"></input>
                                     <input className="input1-2" placeholder="Web Address"></input><br/><br/><br/>
-                                    <textarea className="input12" placeholder="Company Profile" />
+                                    <textarea className="input1" placeholder="Company Profile" />
                                 </div>
                             </Col>
                         </Row>

@@ -3,19 +3,57 @@ import './ViewProfile.css'
 import Sidebar from './Sidebar/Sidebar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 export default class ViewProfile extends React.Component{
+
+    handleSubmit = event => {
+        document.getElementById("companynameid").contentEditable = true;
+        document.getElementById("usernameid").contentEditable = true;
+        document.getElementById("emailaddressid").contentEditable = true;
+        document.getElementById("mobilenumberid").contentEditable = true;
+        document.getElementById("addressid").contentEditable = true;
+        document.getElementById("categoryid").contentEditable = true;
+        document.getElementById("sociallinksid").contentEditable = true;
+        document.getElementById("currentpasswordid").contentEditable = true;
+        document.getElementById("newpasswordid").contentEditable = true;
+        document.getElementById("retypepasswordid").contentEditable = true;
+
+        document.getElementById("spbtnrec").style.visibility = "visible";
+    }
+
+    handleSubmit1 = event => {
+        document.getElementById("companynameid").contentEditable = false;
+        document.getElementById("usernameid").contentEditable = false;
+        document.getElementById("emailaddressid").contentEditable = false;
+        document.getElementById("mobilenumberid").contentEditable = false;
+        document.getElementById("addressid").contentEditable = false;
+        document.getElementById("categoryid").contentEditable = false;
+        document.getElementById("sociallinksid").contentEditable = false;
+        document.getElementById("currentpasswordid").contentEditable = false;
+        document.getElementById("newpasswordid").contentEditable = false;
+        document.getElementById("retypepasswordid").contentEditable = false;
+
+        document.getElementById("spbtnrec").style.visibility = "hidden";
+    }
+
     render(){
         return(
             <Row className="no-gutters">
                 <Sidebar/>
                 <Col className="resume-page1">
                     <Col>
-                        <Row>
+                        {/* <Row>
                         <img className="thumb" src="https://themerail.com/html/oficiona/dashboard/images/user-1.jpg"/>
-                        </Row><br/>
+                        </Row><br/> */}
                         <Row>
-                            <h3>Basic Info</h3>
+                            <Col>
+                                <h3 className="recbasicinfo">Basic Info</h3>
+                            </Col>
+
+                            <Col>
+                                <Button onClick={this.handleSubmit} variant="primary" className="recupdateprofilebtn">Update Profile</Button>
+                            </Col>
                         </Row><br/>
                         <Row>
                             <Col>
@@ -24,7 +62,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter your company name"></input>
+                                    <p id="companynameid" className="input1-vprec">Company Name</p>
                                 </div>
                             </Col>
                         </Row>
@@ -36,7 +74,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter your username"></input>
+                                    <p id="usernameid" className="input1-vprec">Username</p>
                                 </div>
                             </Col>
                         </Row>
@@ -48,7 +86,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter your email address"></input>
+                                    <p id="emailaddressid" className="input1-vprec">Email Address</p>
                                 </div>
                             </Col>
                         </Row>
@@ -60,7 +98,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter your phone number"></input>
+                                    <p id="mobilenumberid" className="input1-vprec">Mobile Number</p>
                                 </div>
                             </Col>
                         </Row>
@@ -72,7 +110,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <textarea className="input1" placeholder="Please enter your address"></textarea>
+                                    <p id="addressid" className="input1-vprec">Address</p>
                                 </div>
                             </Col>
                         </Row>
@@ -84,7 +122,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter a category"></input>
+                                    <p id="categoryid" className="input1-vprec">Category</p>
                                 </div>
                             </Col>
                         </Row><br/><br/>
@@ -98,10 +136,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="linkedin.com/username"></input>
-                                </div><br/><br/><br/>
-                                <div className="resume2">
-                                    <input className="input1" placeholder="facebook.com/username"></input>
+                                    <p id="sociallinksid" className="input1-vprec">linkedin.com</p>
                                 </div>
                             </Col>
                         </Row>
@@ -116,7 +151,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter your current password"></input>
+                                    <p id="currentpasswordid" className="input1-vprec">Current Password</p>
                                 </div>
                             </Col>
                         </Row>
@@ -128,7 +163,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please enter new password"></input>
+                                    <p id="newpasswordid" className="input1-vprec">New password</p>
                                 </div>
                             </Col>
                         </Row>
@@ -140,11 +175,13 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Please re-type the password"></input>
+                                    <p id="retypepasswordid" className="input1-vprec">Re-Type Password</p>
                                 </div>
                             </Col>
                         </Row><br/><br/>
                     </Col><br/>
+                    <Button onClick={this.handleSubmit1} id="spbtnrec" className="saveprofilebtn" variant="primary">Save Profile</Button>
+                    <hr/>
                     <button type="button" class="res-btn btn-danger">Submit</button><br/><br/>
                 </Col>
             </Row>

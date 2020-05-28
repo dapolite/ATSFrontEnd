@@ -32,7 +32,6 @@ export default class App extends Component {
   render() {
     return (
       <ReactSearchBox placeholder="Search..." data={this.data} callback={record => console.log(record)}/>
-
     )
   }
 }

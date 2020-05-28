@@ -2,6 +2,7 @@ import React from 'react';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import './CandidateItems.css';
+import Button from 'react-bootstrap/Button';
 
 export default class CandidateItems extends React.Component{
     render(){
@@ -19,23 +20,17 @@ export default class CandidateItems extends React.Component{
                                     <Row>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square col-spaced1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                                         <p>UX Designer</p>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-check-square col-spaced1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                                        <p>UX Designer</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="col-spacedjbl"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                        <p>Vadodara</p>
                                     </Row>
                                 </Col>
                             </Row>
                         </Col>
                     </Row>
                 </Col>
-                <Row>
-                    <Row>
-                        <Col className="shortlisted-icon">
-                            <Row>
-                                <button type="submit" className="cis">Submit</button>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Row>
+                <Col className="shortlisted-icon">
+                    <Button>Shortlist Candidate</Button>
+                </Col>
                 <Row className="itemjb">
                     <Col>
                         <a href="#" className="download col-spacedjb"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg></a>

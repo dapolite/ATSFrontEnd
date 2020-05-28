@@ -18,7 +18,7 @@ class Form extends Component {
     super();
 
     this.state = {
-      email: '',
+      uname: '',
       password: '',
       email1: ''
     }
@@ -45,7 +45,7 @@ class Form extends Component {
            <h5>Welcome back! Login to your account</h5><br/>
            <Row>
             <Col>
-              <input type="text" pattern="^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$" className="form-control" name="email" placeholder="Email Address" value={this.state.email} onChange={this.changeHandler} required />
+              <input type="text" className="form-control" name="uname" placeholder="User Name" value={this.state.uname} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>
