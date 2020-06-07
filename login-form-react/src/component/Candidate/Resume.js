@@ -17,6 +17,7 @@ export default class Resume extends React.Component{
     constructor(props){
         super(props);
         this.state = {country: '', region: ''};
+        this.state = {country1: '', region1: ''};
     }
 
     state = { showing : true };
@@ -29,8 +30,16 @@ export default class Resume extends React.Component{
         this.setState({region: val});
     }
 
+    selectCountry1(val){
+        this.setState({country1: val});
+    }
+
+    selectRegion1(val){
+        this.setState({region1: val});
+    }
+
     render(){
-        const {country,region} = this.state;
+        const {country,region,country1,region1} = this.state;
         const { showing } = this.state;
         return(
             <Row className="no-gutters">
@@ -105,14 +114,8 @@ export default class Resume extends React.Component{
                                                             <Dropdown.Item as="button">Permanent</Dropdown.Item>
                                                             <Dropdown.Item as="button">Freelance</Dropdown.Item>
                                                         </DropdownButton>
-                                                    </Col> 
-
-                                                    <Col>
-                                                        <input type="number" className="input-type-date" placeholder="Salary Range" />
                                                     </Col>
-                                                </Row>
-                                                <br/>
-                                                <Row>
+
                                                     <Col>
                                                         <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Experience">
                                                             <Dropdown.Item as="button">Less than 1 Year</Dropdown.Item>
@@ -122,32 +125,21 @@ export default class Resume extends React.Component{
                                                             <Dropdown.Item as="button">Over 5 Years</Dropdown.Item>
                                                         </DropdownButton>
                                                     </Col>
-
+                                                </Row>
+                                                <br/>
+                                                <Row>
                                                     <Col>
                                                         <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Qualification">
                                                     
                                                         </DropdownButton>
                                                     </Col>
-                                                </Row>
-                                                <br/>
-                                                <Row>
-                                                    <Col>
-                                                        <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Gender">
-                                                            <Dropdown.Item as="button">Male</Dropdown.Item>
-                                                            <Dropdown.Item as="button">Female</Dropdown.Item>
-                                                        </DropdownButton>
-                                                    </Col>
 
-                                                    <Col>
-                                                        <input type="date" className="input-type-date"/>
-                                                    </Col> 
-                                                </Row>
-                                                <br/>
-                                                <Row>
                                                     <Col>
                                                         <CountryDropdown className="input-type-date1 coun-drop border-0" variant="light" id="dropdown-item-button" value={country} onChange={(val) => this.selectCountry(val)} />
                                                     </Col>
-
+                                                </Row>
+                                                <br/>
+                                                <Row>
                                                     <Col>
                                                         <RegionDropdown className="input-type-date1 reg-drop border-0" variant="light" id="dropdown-item-button" country={country} value={region} onChange={(val) => this.selectRegion(val)} />
                                                     </Col>
@@ -238,13 +230,13 @@ export default class Resume extends React.Component{
                                                 </Col>
                                             </Row>
                                             <br/>
-                                            <Row>
+                                            <Row>   
                                                 <Col>
-                                                    <CountryDropdown className="input-type-date1 coun-drop1" variant="light" id="dropdown-item-button" value={country} onChange={(val) => this.selectCountry(val)} />
+                                                    <CountryDropdown className="input-type-date1 coun-drop1" variant="light" id="dropdown-item-button" value={country1} onChange={(val) => this.selectCountry1(val)} />
                                                 </Col>
 
                                                 <Col>
-                                                    <RegionDropdown className="input-type-date1 reg-drop1" variant="light" id="dropdown-item-button" country={country} value={region} onChange={(val) => this.selectRegion(val)} />
+                                                    <RegionDropdown className="input-type-date1 reg-drop1" variant="light" id="dropdown-item-button" country1={country1} value={region1} onChange={(val) => this.selectRegion1(val)} />
                                                 </Col>
                                             </Row>
                                             <br/>
@@ -315,6 +307,8 @@ export default class Resume extends React.Component{
                                         </Card>
                                     </Col>
                                 </Row><br/><br/>
+                                <Button>Upload Resume</Button><br/>
+                                <hr/>
                                 <button type="button" class="res-btn btn-danger">Submit</button><br/><br/>
                             </div>
                             :null

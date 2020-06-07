@@ -9,3 +9,11 @@
 .dropdown-menu {
     margin-right: 5%;
 }
+
+.dropdownbuttons{
+    float: left;
+}
+
+.search-button{
+    float: right;
+}

@@ -50,3 +50,17 @@
     color: #fff;
     border-radius: 20px;
 }
+
+.recbasicinfo{
+    float: left;
+}
+
+.recupdateprofilebtn{
+    float: right;
+}
+
+.input1-vprec{
+    border-style: groove;
+    padding: 1%;
+    text-align: left;
+}

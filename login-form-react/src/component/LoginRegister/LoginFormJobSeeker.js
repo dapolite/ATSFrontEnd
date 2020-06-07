@@ -18,7 +18,7 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      email: '',
+      uname: '',
       password: '',
       email1: '',
       uname: '',
