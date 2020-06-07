@@ -9,52 +9,45 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios'
 import Popup from 'reactjs-popup';
 import forgot from './forgot.png';
-
+import AuthenticationService from '../Service/AuthenticationService'
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';
 
 class Form extends Component {
   constructor(props){
-    super();
+    super(props);
 
     this.state = {
       email: '',
       password: '',
       email1: '',
-    };
+      uname: '',
+      id:'',
+      values: []
+       };
+       this.handleSubmit=this.handleSubmit.bind(this);
+       this.changeHandler=this.changeHandler.bind(this);
   }
+
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit =event => {
+  handleSubmit = event => {
     event.preventDefault();
-    axios.get('http://localhost:8080/api/candidates/candidatelist')
-    .then((res) => {
-      console.log(res.data);
-      const user = res.data.username;
-      const uid = res.data.userId;
-      const password = res.data.password;
-      console.log(user,password);
-      const username = this.state.email;
-      const passwordEntered = this.state.password;
-      if(username === '' && passwordEntered === ''){
-        document.getElementById('status').innerHTML = '<p>Please Enter A Valid Username and Password</p>';
-      }else if(user === username && passwordEntered === password){
-        document.getElementById('status').innerHTML = '';
-        sessionStorage.setItem('UserName', this.state.email);
-        sessionStorage.setItem('UserId', uid);
-        history.push('/CandidateDashboard')
-        console.log(user, password)
-      }else{
-          document.getElementById('status').innerHTML = '<p>Please Enter A Valid Username and Password</p>';
-      }
+  
+    console.log(this.state.email)
+    AuthenticationService
+    .executeBasicAuthenticationService(this.state.email, this.state.password)
+    .then(() => {
+        AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password)
+        this.props.history.push(`/CandidateDashboard`)
+    }).catch(() => {
+        this.setState({ showSuccessMessage: false })
+        this.setState({ hasLoginFailed: true })
     })
-    .catch(error => {
-      console.log(error);
-    });
-  }
+    }
   
   render () {
     return (

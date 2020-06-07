@@ -26,7 +26,8 @@ export default class RegisterFormCandidate extends Component{
     candidateloc_country: '',
     email: '',
     password: '',
-    cpassword: ''
+    cpassword: '',
+    accountisactive: ''
     };
     this.handleSubmit=this.handleSubmit.bind(this);
     this.changeHandler=this.changeHandler.bind(this);
@@ -60,7 +61,8 @@ export default class RegisterFormCandidate extends Component{
         candidateloc_state : this.state.candidateloc_state,
         candidateloc_country : this.state.candidateloc_country,
         email : this.state.email,
-        password : this.state.password
+        password : this.state.password,
+        accountisactive : true
       };
 
       const config = {

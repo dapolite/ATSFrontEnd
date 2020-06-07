@@ -6,12 +6,28 @@ import JobListItem from '../JobListItem/JobListItem';
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card, { CardBody } from 'react-bootstrap/Card'
+import AuthenticationService from '../Service/AuthenticationService'
+
 
 
 export default class Dashboard extends React.Component{
 
+    constructor(props){
+        super(props);
+    
+        this.state = {
+           user: '',
+           };
+    }
+
+
+    componentDidMount(){
+        const username=AuthenticationService.getLoggedInUserName();
+        console.log(username)
+    }
+
     render(){
-        
+
         return(
             <Row className="no-gutters">  
                 <CandidateSidebar />              
