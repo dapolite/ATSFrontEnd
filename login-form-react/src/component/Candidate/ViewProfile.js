@@ -6,22 +6,29 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card, { CardBody } from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import AuthenticationService from '../Service/AuthenticationService'
 
 export default class ViewProfile extends React.Component{
 
-    constructor(props){
-        super(props);
-    
-        this.state = {
-           user: '',
-           profileDetails:[]
-           };
+    handleSubmit = event => {
+        document.getElementById("myP1").contentEditable = true;
+        document.getElementById("myP2").contentEditable = true;
+        document.getElementById("myP3").contentEditable = true;
+        document.getElementById("myP4").contentEditable = true;
+        document.getElementById("myP5").contentEditable = true;
+        document.getElementById("myP6").contentEditable = true;
+
+        document.getElementById("spbtn").style.visibility = "visible";
     }
 
-    async componentDidMount(){
-        const username=AuthenticationService.getLoggedInUserName();
+    handleSubmit1 = event => {
+        document.getElementById("myP1").contentEditable = false;
+        document.getElementById("myP2").contentEditable = false;
+        document.getElementById("myP3").contentEditable = false;
+        document.getElementById("myP4").contentEditable = false;
+        document.getElementById("myP5").contentEditable = false;
+        document.getElementById("myP6").contentEditable = false;
 
+        document.getElementById("spbtn").style.visibility = "hidden";
     }
 
     render(){
@@ -52,6 +59,9 @@ export default class ViewProfile extends React.Component{
                                         <Button variant="primary">Change</Button>
                                     </Card.Body>
                                 </Card>
+                            </Col>  
+                            <Col>
+                                <Button onClick={this.handleSubmit} variant="primary" className="viewprofilecandupdatebutton">Update Profile</Button>
                             </Col>      
                         </Row>
                         <br></br>
@@ -61,7 +71,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Name</h5>
                                 </Col>
                                 <Col md={{ span: 3, offset: 3 }} className="text-left" >
-                                    <h5>{cname}</h5>
+                                    <h5 id="myP1">{cname}</h5>
                                 </Col>
                             </Row><br/>
                             <Row >
@@ -69,7 +79,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Username</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left" >
-                                    <h5 className="text-left">{uname}</h5>
+                                    <h5 id="myP2">{uname}</h5>
                                 </Col>
                             </Row><br/>
                             <Row >
@@ -77,7 +87,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Email</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left">
-                                    <h5>{email}</h5>
+                                    <h5 id="myP3">{email}</h5>
                                 </Col>
                             </Row><br/>
                             <Row >
@@ -85,7 +95,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Phone</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left">
-                                    <h5>{phone}</h5>
+                                    <h5 id="myP4">{phone}</h5>
                                 </Col>
                             </Row><br/>
                             <Row>
@@ -93,7 +103,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Address</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left">
-                                    <h5>{address}</h5>
+                                    <h5 id="myP5">{address}</h5>
                                 </Col>
                             </Row><br/>  
                             <Row >
@@ -101,10 +111,12 @@ export default class ViewProfile extends React.Component{
                                     <h5>About Me</h5>
                                 </Col>
                                 <Col  md={{ span: 5, offset: 3 }} className="text-left">
-                                    <h5>{aboutme}</h5>
+                                    <h5 id="myP6">{aboutme}</h5>
                                 </Col>
                             </Row><br/>
                         </Card>
+                        <Button onClick={this.handleSubmit1} id="spbtn" className="saveprofilebtn" variant="primary">Save Profile</Button>
+                        <br/><br/>
                     </Col>                       
                 </Col>  
             </Row>
