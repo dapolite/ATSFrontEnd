@@ -4,8 +4,27 @@ import Sidebar from './Sidebar/Sidebar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import AuthenticationService from '../Service/AuthenticationService'
+import Axios from 'axios';
 
 export default class ViewProfile extends React.Component{
+
+    constructor() {
+        super();
+        this.state = { users: [] };
+      }
+    
+
+    componentDidMount(){
+        const username=AuthenticationService.getLoggedInUserName();
+        console.log(username)
+        const user=sessionStorage.getItem('userId');
+        console.log(user)
+        Axios.get(`http://localhost:8080/api/recruiter/${username}`)
+        .then((res)=>
+            this.setState({ users:res.data })
+        );
+    }
 
     handleSubmit = event => {
         document.getElementById("companynameid").contentEditable = true;

@@ -37,11 +37,11 @@ class Form extends Component {
   handleSubmit = event => {
     event.preventDefault();
   
-    console.log(this.state.email)
+    console.log(this.state.uname)
     AuthenticationService
-    .executeBasicAuthenticationService(this.state.email, this.state.password)
+    .executeBasicAuthenticationService(this.state.uname, this.state.password)
     .then(() => {
-        AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password)
+        AuthenticationService.registerSuccessfulLogin(this.state.uname, this.state.password)
         this.props.history.push(`/CandidateDashboard`)
     }).catch(() => {
         this.setState({ showSuccessMessage: false })
@@ -61,7 +61,7 @@ class Form extends Component {
            <h5>Welcome back! Login to your account</h5><br/>
            <Row>
             <Col>
-              <input type="text"  className="form-control" name="email" placeholder="Email Address" value={this.state.email} onChange={this.changeHandler} required />
+              <input type="text"  className="form-control" name="uname" placeholder="Username" value={this.state.uname} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>

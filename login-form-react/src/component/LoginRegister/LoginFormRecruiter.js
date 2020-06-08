@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import forgot from './forgot.png';
-
+import AuthenticationService from '../Service/AuthenticationService'
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';
 
@@ -20,24 +20,33 @@ class Form extends Component {
     this.state = {
       uname: '',
       password: '',
-      email1: ''
+      email1: '',
+      uname: '',
+      id:'',
+      values: []
+       };
+       this.handleSubmit=this.handleSubmit.bind(this);
+       this.changeHandler=this.changeHandler.bind(this);
     }
-  }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
-
-    // axios.get("http://localhost:8080/api/Recruiter")
-    // .then(res => {
-      
-    // })
-
-    history.push('/Dashboard')
     event.preventDefault();
-  }
+  
+    console.log(this.state.uname)
+    AuthenticationService
+    .executeBasicAuthenticationService(this.state.uname, this.state.password)
+    .then(() => {
+        AuthenticationService.registerSuccessfulLogin(this.state.uname, this.state.password)
+        this.props.history.push(`/Dashboard`)
+    }).catch(() => {
+        this.setState({ showSuccessMessage: false })
+        this.setState({ hasLoginFailed: true })
+    })
+    }
   
   render () {
     return (
