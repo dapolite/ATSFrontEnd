@@ -7,13 +7,14 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card, { CardBody } from 'react-bootstrap/Card'
 import AuthenticationService from '../Service/AuthenticationService'
+import Axios from 'axios'
 
 
 
 export default class Dashboard extends React.Component{
 
     constructor(props){
-        super(props);
+        super();
     
         this.state = {
            user: '',
@@ -23,7 +24,8 @@ export default class Dashboard extends React.Component{
 
     componentDidMount(){
         const username=AuthenticationService.getLoggedInUserName();
-        console.log(username)
+        Axios.get(`http://localhost:8080/api/candidates/getId/${username}`)
+        .then(res=>sessionStorage.setItem('userId',res.data));
     }
 
     render(){

@@ -6,8 +6,27 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card, { CardBody } from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import AuthenticationService from '../Service/AuthenticationService'
+import Axios from 'axios';
 
 export default class ViewProfile extends React.Component{
+
+    constructor() {
+        super();
+        this.state = { users: [] };
+      }
+    
+
+    componentDidMount(){
+        const username=AuthenticationService.getLoggedInUserName();
+        console.log(username)
+        const user=sessionStorage.getItem('userId');
+        console.log(user)
+        Axios.get(`http://localhost:8080/api/candidates/${username}`)
+        .then((res)=>
+            this.setState({ users:res.data })
+        );
+    }
 
     handleSubmit = event => {
         document.getElementById("myP1").contentEditable = true;
@@ -40,6 +59,7 @@ export default class ViewProfile extends React.Component{
         const aboutme="I'm a Student Of M.S. University"
 
         return(
+
             <Row className="no-gutters">  
                 <CandidateSidebar />              
                 <Col className="resume-page">
@@ -71,7 +91,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Name</h5>
                                 </Col>
                                 <Col md={{ span: 3, offset: 3 }} className="text-left" >
-                                    <h5 id="myP1">{cname}</h5>
+                                    <h5 id="myP1">{this.state.users.candidate_fname} {this.state.users.candidate_lname}</h5>
                                 </Col>
                             </Row><br/>
                             <Row >
@@ -79,7 +99,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Username</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left" >
-                                    <h5 id="myP2">{uname}</h5>
+                                    <h5 id="myP2">{this.state.users.username}</h5>
                                 </Col>
                             </Row><br/>
                             <Row >
@@ -87,7 +107,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Email</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left">
-                                    <h5 id="myP3">{email}</h5>
+                                    <h5 id="myP3">{this.state.users.email}</h5>
                                 </Col>
                             </Row><br/>
                             <Row >
@@ -95,7 +115,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Phone</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left">
-                                    <h5 id="myP4">{phone}</h5>
+                                    <h5 id="myP4">{this.state.users.phoneno}</h5>
                                 </Col>
                             </Row><br/>
                             <Row>
@@ -103,7 +123,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>Address</h5>
                                 </Col>
                                 <Col  md={{ span: 3, offset: 3 }} className="text-left">
-                                    <h5 id="myP5">{address}</h5>
+                                    <h5 id="myP5">{this.state.users.candidate_address}</h5>
                                 </Col>
                             </Row><br/>  
                             <Row >
@@ -111,7 +131,7 @@ export default class ViewProfile extends React.Component{
                                     <h5>About Me</h5>
                                 </Col>
                                 <Col  md={{ span: 5, offset: 3 }} className="text-left">
-                                    <h5 id="myP6">{aboutme}</h5>
+                                    <h5 id="myP6">{this.state.users.candidate_about}</h5>
                                 </Col>
                             </Row><br/>
                         </Card>
