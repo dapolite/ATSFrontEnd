@@ -6,11 +6,91 @@ import Col from 'react-bootstrap/Col';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
+import axios from 'axios'
+import history from '../history';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 export default class PostNewJobs extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            jobposttitle : '',
+            jobpostjobdesc : '',
+            jobpostresponsibilities : '',
+            jobpostbenefits : '',
+            jobpostexperience : '',
+            jobpostcategory : '',
+            jobpostqualification : '',
+            jobpostcompanyname : '',
+            jobpostwebaddress : '',
+            jobpostcompanyprofile : '',
+            jobpostdeadline : ''
+        };
+        this.state = {
+            country: '',
+            region: ''
+        };
+        this.handleSubmit=this.handleSubmit.bind(this);
+        this.changeHandler=this.changeHandler.bind(this);
+    }
+
+    selectCountry(val){
+        this.setState({country: val});
+    }
+
+    selectRegion(val){
+        this.setState({region: val});
+    }
+
+    changeHandler = event => {
+        this.setState({ [event.target.name]: event.target.value });
+      };
+
+    handleSubmit = event => {
+
+        const user = sessionStorage.postItem('userId');
+        console.log(user);
+
+        const jobsposts = {
+            jobposttitle : this.state.jobposttitle,
+            jobpostjobdesc : this.state.jobpostjobdesc,
+            jobpostresponsibilities : this.state.jobpostresponsibilities,
+            jobpostbenefits : this.state.jobpostbenefits,
+            jobpostexperience : this.state.jobpostexperience,
+            jobpostcategory : this.state.jobpostcategory,
+            jobpostqualification : this.state.jobpostqualification,
+            jobpostcompanyname : this.state.jobpostcompanyname,
+            jobpostwebaddress : this.state.jobpostwebaddress,
+            jobpostcompanyprofile : this.state.jobpostcompanyprofile,
+            jobpostdeadline : this.state.jobpostdeadline
+        };
+
+        const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+
+          axios.post(`http://localhost:8080/api/jobspost`,jobsposts,config)
+          .then(res => {
+            if(res.data!=null){
+                console.log(res.data);
+                console.log(jobsposts);
+                console.log(res);
+                alert("Job Posted");
+                alert(jobsposts);
+                history.push('/Dashboard');
+            }
+        })
+    }
+
     render(){
+        const {country,region} = this.state;
+        const {jobposttitle,jobpostcategory,jobpostexperience,jobpostqualification,jobpostjobdesc,jobpostresponsibilities,jobpostbenefits,jobpostcompanyname,jobpostwebaddress,jobpostcompanyprofile,jobpostdeadline} = this.state;
         return(
-            <Row className="no-gutters">
+            <form className="needs-validation" onSubmit={this.handleSubmit}>
+                <Row className="no-gutters">
                 <Sidebar />
                 <Col className="resume-page1">
                     <Col>
@@ -26,7 +106,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Your Job Title Here"></input>
+                                    <textarea className="input1 selectdropdown1" name="jobposttitle" value={jobposttitle} onChange={this.changeHandler} placeholder="Your Job Title Here" required/>
                                 </div>
                             </Col>
                         </Row>
@@ -37,56 +117,62 @@ export default class PostNewJobs extends React.Component{
                                     <input className="input13" placeholder="Job Summary" readOnly></input>
                                 </div>
                                 
-                                <Dropdown>
-                                    <Card className="resume2 border-0">
-                                        <Row>
-                                            <Col>
-                                                <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Job Category">
-                                                    <Dropdown.Item as="button">Action</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Something else</Dropdown.Item>
-                                                </DropdownButton>
-                                            </Col>
+                                <Card className="border-0">
+                                <Row>
+                                    <Col>
+                                        <select className="selectdropdown" name="jobpostcategory" value={jobpostcategory} onChange={this.changeHandler} required>
+                                            <option value="" disabled selected>Job Category</option>
+                                            <option value="1">Action</option>
+                                            <option value="2">Another action</option>
+                                            <option value="3">Something else</option>
+                                            <option value="4">Something else</option>
+                                        </select>
+                                    </Col>
 
-                                            <Col>
-                                                <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Job Type">
-                                                    <Dropdown.Item as="button">Part Time</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Full Time</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Temperory</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Permanent</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Freelance</Dropdown.Item>
-                                                </DropdownButton>
-                                            </Col> 
-                                        </Row>                                    
-                                        <br/>
-                                        <Row>
-                                            <Col>
-                                                <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Experience (Optional)">
-                                                    <Dropdown.Item as="button">Less than 1 Year</Dropdown.Item>
-                                                    <Dropdown.Item as="button">2 Years</Dropdown.Item>
-                                                    <Dropdown.Item as="button">3 Years</Dropdown.Item>
-                                                    <Dropdown.Item as="button">4 Years</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Over 5 Years</Dropdown.Item>
-                                                </DropdownButton>
-                                            </Col>
+                                    <Col>
+                                        <select className="selectdropdown" /*name="jobpostcategory" value={jobpostcategory} onChange={this.changeHandler} required*/>
+                                            <option value="" disabled selected>Job Type</option>
+                                            <option value="1">Part Time</option>
+                                            <option value="2">Full Time</option>
+                                            <option value="3">Permanent</option>
+                                            <option value="4">Temporary</option>
+                                        </select>
+                                    </Col>
+                                </Row>
+                                <br/>
+                                <Row>
+                                    <Col>
+                                        <select className="selectdropdown" name="jobpostexperience" value={jobpostexperience} onChange={this.changeHandler} required>
+                                            <option value="" disabled selected>Experience</option>
+                                            <option value="1">Less Than 1 Year</option>
+                                            <option value="2">2 Years</option>
+                                            <option value="3">3 Years</option>
+                                            <option value="4">4 Years</option>
+                                            <option value="5">More Than 5 Years</option>
+                                        </select>
+                                    </Col>
 
-                                            <Col>
-                                                <DropdownButton className="input-type-date1" variant="light" id="dropdown-item-button" title="Qualification">
-                                                    <Dropdown.Item as="button">Matriculation</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Intermediate</Dropdown.Item>
-                                                    <Dropdown.Item as="button">Graduate</Dropdown.Item>
-                                                </DropdownButton>
-                                            </Col>
-                                        </Row>
-                                        <br/>
-                                        <Row>
-                                            <Col>
-                                                <input type="date" className="input-type-date" placeholder="" />
-                                            </Col> 
-                                        </Row>
-                                        <br/>
-                                    </Card>
-                                </Dropdown>
+                                    <Col>
+                                        <select className="selectdropdown" name="jobpostqualification" value={jobpostqualification} onChange={this.changeHandler} required>
+                                            <option value="" disabled selected>Qualification</option>
+                                            <option value="1">Action</option>
+                                            <option value="2">Another action</option>
+                                            <option value="3">Something else</option>
+                                            <option value="4">Something else</option>
+                                        </select>
+                                    </Col>
+                                </Row>
+                                <br/>
+                                <Row>
+                                    <Col>
+                                        <CountryDropdown className="selectdropdown" variant="light" id="dropdown-item-button" value={country} onChange={(val) => this.selectCountry(val)} />
+                                    </Col>
+
+                                    <Col>
+                                        <RegionDropdown className="selectdropdown" variant="light" id="dropdown-item-button" country={country} value={region} onChange={(val) => this.selectRegion(val)} />
+                                    </Col>
+                                </Row>
+                                </Card>
                             </Col>
                         </Row>
                         <br/><br/>
@@ -97,7 +183,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Your Job Description Here"></input>
+                                    <textarea className="input1 selectdropdown1" name="jobpostjobdesc" value={jobpostjobdesc} onChange={this.changeHandler} placeholder="Your Job Description Here" required/>
                                 </div>
                             </Col>
                         </Row>
@@ -109,7 +195,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Your Responsibilities Here"></input>
+                                    <textarea className="input1 selectdropdown1" name="jobpostresponsibilities" value={jobpostresponsibilities} onChange={this.changeHandler} placeholder="Your Responsibilities Here" required/>
                                 </div>
                             </Col>
                         </Row>
@@ -133,7 +219,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1" placeholder="Your Other Benefits Here"></input>
+                                    <textarea className="input1 selectdropdown1" name="jobpostbenefits" value={jobpostbenefits} onChange={this.changeHandler} placeholder="Your Other Benefits Here" required/>
                                 </div>
                             </Col>
                         </Row>
@@ -145,17 +231,30 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input className="input1-1" placeholder="Company Name"></input>
-                                    <input className="input1-2" placeholder="Web Address"></input><br/><br/><br/>
-                                    <textarea className="input1" placeholder="Company Profile" />
+                                    <textarea className="input1-1 selectdropdown1" placeholder="Company Name" name="jobpostcompanyname" value={jobpostcompanyname} onChange={this.changeHandler} required/>
+                                    <textarea className="input1-2 selectdropdown1" placeholder="Web Address" name="jobpostwebaddress" value={jobpostwebaddress} onChange={this.changeHandler} required/><br/><br/><br/><br/>
+                                    <textarea className="input1 selectdropdown1" placeholder="Company Profile" name="jobpostcompanyprofile" value={jobpostcompanyprofile} onChange={this.changeHandler} required />
+                                </div>
+                            </Col>
+                        </Row>
+                        <br/><br/>
+                        <Row>
+                            <Col>
+                                <div className="resume1">
+                                    <input className="input13" placeholder="Deadline Date" readOnly></input>
+                                </div>
+                                
+                                <div className="resume2">
+                                    <input type="date" className="input1 selectdropdown1" name="deadlinedate" value={jobpostdeadline} onChange={this.changeHandler} required/>
                                 </div>
                             </Col>
                         </Row>
                         <br/><br/>
                     </Col><br/>
-                    <button type="button" class="res-btn btn-danger">Submit</button><br/><br/>
+                    <button type="submit" className="res-btn btn-danger">Submit</button><br/><br/>
                 </Col>
             </Row>
+            </form>
         )
     }
 }

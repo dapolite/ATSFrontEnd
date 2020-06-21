@@ -1,0 +1,11 @@
+.view-profile-page{
+    padding: 2%;
+}
+
+.viewprofilecandupdatebutton{
+    float: right;
+}
+
+.saveprofilebtn{
+    visibility: hidden;
+}

@@ -60,7 +60,10 @@
 }
 
 .input1-vprec{
-    border-style: groove;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: black;
     padding: 1%;
     text-align: left;
 }

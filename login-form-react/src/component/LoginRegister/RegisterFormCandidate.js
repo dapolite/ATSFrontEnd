@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import history from '../history';
+import ImageUploader from 'react-images-upload'
 
 export default class RegisterFormCandidate extends Component{
   
@@ -27,11 +28,18 @@ export default class RegisterFormCandidate extends Component{
     email: '',
     password: '',
     cpassword: '',
-    accountisactive: ''
-    };
+    accountisactive: '',
+    // pictures : []
+    };  
+    // this.onDrop = this.onDrop.bind(this);
     this.handleSubmit=this.handleSubmit.bind(this);
     this.changeHandler=this.changeHandler.bind(this);
   }
+
+  // onDrop(picture){
+  //   this.setState({ pictures : this.state.pictures.concat(picture),
+  //    });
+  // }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -98,7 +106,8 @@ export default class RegisterFormCandidate extends Component{
           <img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img>
           <h5 class="h5" align="center">Please complete to create your account</h5><br></br>
           <Row>
-            <p>Upload Your Profile Picture:</p>
+            {/* <p>Upload Your Profile Picture:</p> */}
+            {/* <ImageUploader withIcon={true} buttonText='Choose Image' onChange={this.onDrop} imgExtension={[ '.jpg', '.png', '.jpeg' ]} maxFileSize={5242880} /> */}
           </Row>
           <br/>
           <Row>

@@ -1,21 +1,19 @@
 import axios from 'axios'
-import Axios from 'axios';
-import history from '../history'
 
 const API_URL = 'http://localhost:8080'
 
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
-class AuthenticationService {
+class AuthenticationServiceRec {
 
     executeBasicAuthenticationService(username, password) {
-        return axios.get(`${API_URL}/api/candidates/homecan`,
+        return axios.get(`${API_URL}/api/Recruiter/homerec`,
             { headers: { authorization: this.createBasicAuthToken(username, password) } })
     }
 
     executeJwtAuthenticationService(username, password) {
         console.log(username);
-        return axios.post(`${API_URL}/api/candidates/homecan`, {
+        return axios.post(`${API_URL}/api/Recruiter/homerec`, {
             username,
             password
         })
@@ -44,8 +42,6 @@ class AuthenticationService {
 
     logout() {
         sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
-        Axios.get(`${API_URL}/api/candidates/logout`)
-        history.push("/")
     }
 
     isUserLoggedIn() {
@@ -72,4 +68,4 @@ class AuthenticationService {
     }
 }
 
-export default new AuthenticationService()
+export default new AuthenticationServiceRec()

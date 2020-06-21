@@ -10,8 +10,8 @@ import AuthenticationService from '../Service/AuthenticationService'
 import Axios from 'axios'
 
 
-
 export default class Dashboard extends React.Component{
+
 
     constructor(props){
         super();
@@ -24,6 +24,9 @@ export default class Dashboard extends React.Component{
 
     componentDidMount(){
         const username=AuthenticationService.getLoggedInUserName();
+        const userId=this.props.match.params.uid;
+        console.log(userId);
+        const { match: { params } } = this.props;
         Axios.get(`http://localhost:8080/api/candidates/getId/${username}`)
         .then(res=>sessionStorage.setItem('userId',res.data));
     }

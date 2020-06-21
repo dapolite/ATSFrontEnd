@@ -5,7 +5,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-import AuthenticationService from '../Service/AuthenticationService'
+import AuthenticationServiceRec from '../Service/AuthenticationServiceRec'
 import Axios from 'axios'
 import {Bar} from 'react-chartjs-2';
 import {MDBContainer} from 'mdbreact';
@@ -21,10 +21,14 @@ export default class Dashboard extends React.Component{
     }
 
     componentDidMount(){
-        const username=AuthenticationService.getLoggedInUserName();
-        Axios.get(`http://localhost:8080/api/recruiter/getId/${username}`)
+        const username=AuthenticationServiceRec.getLoggedInUserName();
+        const userId=this.props.match.params.uid;
+        console.log(userId);
+        const { match: { params } } = this.props;
+        Axios.get(`http://localhost:8080/api/Recruiter/getId/${username}`)
         .then(res=>sessionStorage.setItem('userId',res.data));
     }
+
 
     state = {
         dataBar:{

@@ -1,13 +1,12 @@
 import React from 'react';
-import Clock from 'react-live-clock';
 import './AppliedJobItem.css';
-import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
-import Card, { CardBody } from 'react-bootstrap/Card'
-
+// import Pagination from'react-bootstrap/Pagination'
+import PropTypes from 'prop-types';
 
 export default class AppliedJobItem extends React.Component{
+    
     render(){
         return(
             <Row className="aji">

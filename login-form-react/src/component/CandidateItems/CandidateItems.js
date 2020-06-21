@@ -3,27 +3,45 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import './CandidateItems.css';
 import Button from 'react-bootstrap/Button';
+import Axios from 'axios';
 
 export default class CandidateItems extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            cand : []
+        };
+    }
+
+    componentDidMount(){
+        const user = sessionStorage.getItem('userId');
+        console.log(user)
+        Axios.get(`http://localhost:8080/api/candidateresume`)
+        .then((response) => 
+            this.setState( { cand:response.data } ),
+        );
+    }
+
     render(){
         return(
-            <Row className="v1jb">
+            this.state.cand.map((cands) => 
+            (
+                <Row className="v1jb" key={cands.resumeId}>
                 <Col>
                     <Row>
                         <img className="thumb" src="https://themerail.com/html/oficiona/dashboard/images/user-1.jpg"/>
                         <Col>
                             <Row>
-                                <h6 className="col-spaced1 row-spaced">Dhruva Shaiva</h6>
+                                <h6 className="col-spaced1 row-spaced">{cands.candidate_fullname}</h6>
                             </Row>
                             <Row>
                                 <Col>
                                     <Row>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square col-spaced1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                                        <p>UX Designer</p>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="col-spacedjbl"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                        <p>Vadodara</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square col-spaced1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>{cands.candidate_info}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="col-spacedjbl"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>{cands.candidate_address}
                                     </Row>
-                                </Col>
+                                </Col>                                          
                             </Row>
                         </Col>
                     </Row>
@@ -44,6 +62,7 @@ export default class CandidateItems extends React.Component{
                     <br/><br/><br/>  
                 </Row>
             </Row>
+            ))
         )
     }
 }

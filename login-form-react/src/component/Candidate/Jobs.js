@@ -56,9 +56,7 @@ export default class Jobs extends React.Component{
                         </Row>
                         <br></br> 
                         <Col>
-                            <JobItem/>
-                            <JobItem/>
-                            <JobItem/>
+                            <JobListItem/>
                         </Col>
                     </Col>
                 </Col>

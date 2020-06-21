@@ -6,10 +6,10 @@ import linkedin_icon_flat from './linkedin_icon_flat.png';
 import history from '../history';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import axios from 'axios';
+import Axios from 'axios';
 import Popup from 'reactjs-popup';
 import forgot from './forgot.png';
-import AuthenticationService from '../Service/AuthenticationService'
+import AuthenticationServiceRec from '../Service/AuthenticationServiceRec'
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';
 
@@ -21,7 +21,7 @@ class Form extends Component {
       uname: '',
       password: '',
       email1: '',
-      uname: '',
+      uname : '',
       id:'',
       values: []
        };
@@ -35,18 +35,23 @@ class Form extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-  
-    console.log(this.state.uname)
-    AuthenticationService
+    const id='';
+    AuthenticationServiceRec
     .executeBasicAuthenticationService(this.state.uname, this.state.password)
     .then(() => {
-        AuthenticationService.registerSuccessfulLogin(this.state.uname, this.state.password)
-        this.props.history.push(`/Dashboard`)
+        AuthenticationServiceRec.registerSuccessfulLogin(this.state.uname, this.state.password)
+        Axios.get(`http://localhost:8080/api/Recruiter/getId/${this.state.uname}`)
+        .then((response)=>{
+          this.setState({id:response.data})
+          console.log(this.state.id)
+          this.props.history.push(`/Dashboard/${this.state.id}`)
+        })
     }).catch(() => {
         this.setState({ showSuccessMessage: false })
         this.setState({ hasLoginFailed: true })
     })
     }
+
   
   render () {
     return (
@@ -66,7 +71,7 @@ class Form extends Component {
           <br/>
           <Row>
             <Col>
-              <input type="password" pattern="^(?=.*\d).{4,20}$" className="form-control" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} required />
+              <input type="password" /*pattern="^(?=.*\d).{4,20}$"*/ className="form-control" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>

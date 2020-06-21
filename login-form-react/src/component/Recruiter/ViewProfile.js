@@ -4,7 +4,7 @@ import Sidebar from './Sidebar/Sidebar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import AuthenticationService from '../Service/AuthenticationService'
+import AuthenticationServiceRec from '../Service/AuthenticationServiceRec'
 import Axios from 'axios';
 
 export default class ViewProfile extends React.Component{
@@ -15,24 +15,37 @@ export default class ViewProfile extends React.Component{
       }
     
 
+    // componentDidMount(){
+    //     const username=AuthenticationServiceRec.getLoggedInUserName();
+    //     console.log(username)
+    //     const user=sessionStorage.getItem('userId');
+    //     console.log(user)
+    //     Axios.get(`http://localhost:8080/api/Recruiter/${username}`)
+    //     .then((res)=>
+    //         this.setState({ users:res.data })
+    //     );
+    // }
+
     componentDidMount(){
-        const username=AuthenticationService.getLoggedInUserName();
+        const username=AuthenticationServiceRec.getLoggedInUserName();
         console.log(username)
-        const user=sessionStorage.getItem('userId');
-        console.log(user)
-        Axios.get(`http://localhost:8080/api/recruiter/${username}`)
-        .then((res)=>
-            this.setState({ users:res.data })
-        );
+        const userId=this.props.match.params.uid;
+        console.log(userId);
+        const { match: { params } } = this.props;
+        Axios.get(`http://localhost:8080/api/Recruiter/getId/${userId}`)
+        .then(res=>sessionStorage.setItem('userId',res.data));
     }
 
     handleSubmit = event => {
-        document.getElementById("companynameid").contentEditable = true;
+        document.getElementById("fullnameid").contentEditable = true;
         document.getElementById("usernameid").contentEditable = true;
         document.getElementById("emailaddressid").contentEditable = true;
         document.getElementById("mobilenumberid").contentEditable = true;
-        document.getElementById("addressid").contentEditable = true;
-        document.getElementById("categoryid").contentEditable = true;
+        // document.getElementById("addressid").contentEditable = true;
+        // document.getElementById("categoryid").contentEditable = true;
+        document.getElementById("companynameid").contentEditable = true;
+        document.getElementById("companyaddressid").contentEditable = true;
+        document.getElementById("companydescid").contentEditable = true;
         document.getElementById("sociallinksid").contentEditable = true;
         document.getElementById("currentpasswordid").contentEditable = true;
         document.getElementById("newpasswordid").contentEditable = true;
@@ -42,12 +55,15 @@ export default class ViewProfile extends React.Component{
     }
 
     handleSubmit1 = event => {
-        document.getElementById("companynameid").contentEditable = false;
+        document.getElementById("fullnameid").contentEditable = false;
         document.getElementById("usernameid").contentEditable = false;
         document.getElementById("emailaddressid").contentEditable = false;
         document.getElementById("mobilenumberid").contentEditable = false;
-        document.getElementById("addressid").contentEditable = false;
-        document.getElementById("categoryid").contentEditable = false;
+        // document.getElementById("addressid").contentEditable = false;
+        // document.getElementById("categoryid").contentEditable = false;
+        document.getElementById("companynameid").contentEditable = false;
+        document.getElementById("companyaddressid").contentEditable = false;
+        document.getElementById("companydescid").contentEditable = false;
         document.getElementById("sociallinksid").contentEditable = false;
         document.getElementById("currentpasswordid").contentEditable = false;
         document.getElementById("newpasswordid").contentEditable = false;
@@ -73,19 +89,20 @@ export default class ViewProfile extends React.Component{
                             <Col>
                                 <Button onClick={this.handleSubmit} variant="primary" className="recupdateprofilebtn">Update Profile</Button>
                             </Col>
-                        </Row><br/>
+                        </Row>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
-                                    <input className="input13" placeholder="Company Name" readOnly></input>
+                                    <input className="input13" placeholder="Full Name" readOnly></input>
                                 </div>
                                 
-                                <div className="resume2">
-                                    <p id="companynameid" className="input1-vprec">Company Name</p>
+                                <div className="resume2 text-left">
+                                    <p id="fullnameid">{this.state.users.firstname} {this.state.users.lastname}</p>
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -93,11 +110,12 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="usernameid" className="input1-vprec">Username</p>
+                                    {/* <p id="usernameid" className="input1-vprec">Username</p> */}
+                                    <h5 id="usernameid">{this.state.users.username}</h5>
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -106,10 +124,11 @@ export default class ViewProfile extends React.Component{
                                 
                                 <div className="resume2">
                                     <p id="emailaddressid" className="input1-vprec">Email Address</p>
+                                    {/* <h5 id="emailaddressid">{this.state.users.email}</h5> */}
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -118,11 +137,12 @@ export default class ViewProfile extends React.Component{
                                 
                                 <div className="resume2">
                                     <p id="mobilenumberid" className="input1-vprec">Mobile Number</p>
+                                    {/* <h5 id="mobilenumberid">{this.state.users.phoneno}</h5> */}
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
-                        <Row>
+                        <br/>
+                        {/* <Row>
                             <Col>
                                 <div className="resume1">
                                     <input className="input13" placeholder="Address" readOnly></input>
@@ -144,10 +164,52 @@ export default class ViewProfile extends React.Component{
                                     <p id="categoryid" className="input1-vprec">Category</p>
                                 </div>
                             </Col>
-                        </Row><br/><br/>
+                        </Row>
+                        <br/><br/> */}
+                        <Row>
+                            <h3 >Company Details</h3>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <div className="resume1">
+                                    <input className="input13" placeholder="Company Name" readOnly></input>
+                                </div>
+                                
+                                <div className="resume2">
+                                    <p id="companynameid" className="input1-vprec">Company Name</p>
+                                </div>
+                            </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <div className="resume1">
+                                    <input className="input13" placeholder="Company Address" readOnly></input>
+                                </div>
+                                
+                                <div className="resume2">
+                                    <p id="companyaddressid" className="input1-vprec">Company Address</p>
+                                </div>
+                            </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                            <Col>
+                                <div className="resume1">
+                                    <input className="input13" placeholder="Company Description" readOnly></input>
+                                </div>
+                                
+                                <div className="resume2">
+                                    <p id="companydescid" className="input1-vprec">Company Description</p>
+                                </div>
+                            </Col>
+                        </Row>
+                        <br/>
                         <Row>
                             <h3>Social Networks</h3>
-                        </Row><br/>
+                        </Row>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -159,10 +221,11 @@ export default class ViewProfile extends React.Component{
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br/>
                         <Row>
                             <h3>Change Password</h3>
-                        </Row><br/>
+                        </Row>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -174,7 +237,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -186,7 +249,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                             </Col>
                         </Row>
-                        <br/><br/>
+                        <br/>
                         <Row>
                             <Col>
                                 <div className="resume1">
@@ -197,11 +260,12 @@ export default class ViewProfile extends React.Component{
                                     <p id="retypepasswordid" className="input1-vprec">Re-Type Password</p>
                                 </div>
                             </Col>
-                        </Row><br/><br/>
+                        </Row>
+                        <br/>
                     </Col><br/>
                     <Button onClick={this.handleSubmit1} id="spbtnrec" className="saveprofilebtn" variant="primary">Save Profile</Button>
                     <hr/>
-                    <button type="button" class="res-btn btn-danger">Submit</button><br/><br/>
+                    <button type="button" className="res-btn btn-danger">Submit</button><br/><br/>
                 </Col>
             </Row>
         )

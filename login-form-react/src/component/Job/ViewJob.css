@@ -25,18 +25,3 @@
     float: right;
     padding: 1%;
 }
-
-.selectdropdown{
-    padding: 3%;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    float: left;
-    margin-left: 15%;
-}
-
-.selectdropdown1{
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}

@@ -7,7 +7,9 @@ import Row from 'react-bootstrap/Row'
 import Card, { CardBody } from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import AuthenticationService from '../Service/AuthenticationService'
+import history from '../history'
 import Axios from 'axios';
+
 
 export default class ViewProfile extends React.Component{
 
@@ -18,6 +20,7 @@ export default class ViewProfile extends React.Component{
     
 
     componentDidMount(){
+        
         const username=AuthenticationService.getLoggedInUserName();
         console.log(username)
         const user=sessionStorage.getItem('userId');
@@ -28,35 +31,16 @@ export default class ViewProfile extends React.Component{
         );
     }
 
-    handleSubmit = event => {
-        document.getElementById("myP1").contentEditable = true;
-        document.getElementById("myP2").contentEditable = true;
-        document.getElementById("myP3").contentEditable = true;
-        document.getElementById("myP4").contentEditable = true;
-        document.getElementById("myP5").contentEditable = true;
-        document.getElementById("myP6").contentEditable = true;
-
-        document.getElementById("spbtn").style.visibility = "visible";
+    gotoedit(){
+        //this.history.push(`/EditCandidateProfile/${userid}`)
     }
 
-    handleSubmit1 = event => {
-        document.getElementById("myP1").contentEditable = false;
-        document.getElementById("myP2").contentEditable = false;
-        document.getElementById("myP3").contentEditable = false;
-        document.getElementById("myP4").contentEditable = false;
-        document.getElementById("myP5").contentEditable = false;
-        document.getElementById("myP6").contentEditable = false;
 
-        document.getElementById("spbtn").style.visibility = "hidden";
-    }
 
     render(){
-        const cname="Dhruva Shaiva"
-        const uname="dhruvashaiva"
-        const email="dhunchi1999@email.com"
-        const phone="9428219522"
-        const address="Panchavati, Gorwa"
-        const aboutme="I'm a Student Of M.S. University"
+    
+        const userid=this.props.match.params.uid;
+        console.log(userid);
 
         return(
 
@@ -81,7 +65,7 @@ export default class ViewProfile extends React.Component{
                                 </Card>
                             </Col>  
                             <Col>
-                                <Button onClick={this.handleSubmit} variant="primary" className="viewprofilecandupdatebutton">Update Profile</Button>
+                                <Button onClick={()=>{history.push(`/EditCandidateProfile/${userid}`)}} variant="primary" className="viewprofilecandupdatebutton">Update Profile</Button>
                             </Col>      
                         </Row>
                         <br></br>
@@ -135,7 +119,6 @@ export default class ViewProfile extends React.Component{
                                 </Col>
                             </Row><br/>
                         </Card>
-                        <Button onClick={this.handleSubmit1} id="spbtn" className="saveprofilebtn" variant="primary">Save Profile</Button>
                         <br/><br/>
                     </Col>                       
                 </Col>  
