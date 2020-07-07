@@ -9,9 +9,10 @@ import Col from 'react-bootstrap/Col';
 import Axios from 'axios';
 import Popup from 'reactjs-popup';
 import forgot from './forgot.png';
-import AuthenticationServiceRec from '../Service/AuthenticationServiceRec'
+
 import Modal from 'react-bootstrap/Modal'; 
 import Button from 'react-bootstrap/Button';
+import AuthenticationServiceRec from '../Service/AuthenticationServiceRec';
 
 class Form extends Component {
   constructor(props){
@@ -20,20 +21,16 @@ class Form extends Component {
     this.state = {
       uname: '',
       password: '',
-      email1: '',
-      uname : '',
-      id:'',
-      values: []
-       };
-       this.handleSubmit=this.handleSubmit.bind(this);
-       this.changeHandler=this.changeHandler.bind(this);
+      email1: ''
     }
+  }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = event => {
+
     event.preventDefault();
     const id='';
     AuthenticationServiceRec
@@ -50,8 +47,7 @@ class Form extends Component {
         this.setState({ showSuccessMessage: false })
         this.setState({ hasLoginFailed: true })
     })
-    }
-
+  }
   
   render () {
     return (
@@ -71,7 +67,7 @@ class Form extends Component {
           <br/>
           <Row>
             <Col>
-              <input type="password" /*pattern="^(?=.*\d).{4,20}$"*/ className="form-control" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} required />
+              <input type="password" pattern="^(?=.*\d).{4,20}$" className="form-control" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} required />
             </Col>
           </Row>
           <br/>

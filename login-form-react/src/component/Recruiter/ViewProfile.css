@@ -59,11 +59,24 @@
     float: right;
 }
 
-.input1-vprec{
+p.two {
+    border-style: solid;
+    border-color: lightgray;
+    border-width: medium;
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: black;
+    padding: 1%;
+    text-align: left;
+}
+
+.input1-vp{
+    border-style: solid;
+    border-color: lightgray;
+    border-width: medium;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     padding: 1%;
     text-align: left;
 }

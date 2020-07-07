@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import history from '../history';
+import AuthenticationServiceRec from '../Service/AuthenticationServiceRec'
 
 export default class RegisterFormRecruiter extends Component{
     constructor(props){
@@ -44,7 +45,12 @@ export default class RegisterFormRecruiter extends Component{
           }
         };
 
-        axios.post("http://localhost:8080/api/companydetails",company,config)
+        const username=AuthenticationServiceRec.getLoggedInUserName();
+        console.log(username)
+        const user=sessionStorage.getItem('userId');
+        console.log(user)
+
+        axios.post(`http://localhost:8080/api/companydetails/${user}`,company,config)
         .then(res => {
         if(res.data!=null){
           console.log(res.data);

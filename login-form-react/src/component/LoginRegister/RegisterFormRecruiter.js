@@ -39,7 +39,7 @@ export default class RegisterFormRecruiter extends Component{
       }
       else
       {
-        history.push('/RegisterFormRecruiterSecondPage');
+        history.push('/LoginFormRecruiter');
         const recruiter = {
           firstname: this.state.firstname,
           lastname:this.state.lastname,

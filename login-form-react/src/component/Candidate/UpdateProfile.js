@@ -47,7 +47,7 @@ export default class UpdateProfile extends React.Component{
 
 
     findUserById = (userid) =>{
-        Axios.get(`http://localhost:8080/api/candidates/candidate/${userid}`)
+        Axios.get(`http://localhost:8080/api/Candidate/get/${userid}`)
         .then(response=>{
             if(response.data != null){
                 this.setState({
@@ -77,8 +77,9 @@ export default class UpdateProfile extends React.Component{
       };
 
     updateProfile  = event =>{
-        event.preventDefault();
+        
         const userid=this.props.match.params.uid;
+        console.log(userid)
         const profile = {
             candidate_fname : this.state.candidate_fname,
             candidate_lname : this.state.candidate_lname,
@@ -88,6 +89,7 @@ export default class UpdateProfile extends React.Component{
             phoneno : this.state.phoneno,
             email : this.state.email,
             password : this.state.password,
+            accountisactive : true,
           };
 
           const config = {
@@ -96,7 +98,7 @@ export default class UpdateProfile extends React.Component{
             }
           };
 
-          Axios.put(`http://localhost:8080/api/candidates/updatecandidate/${userid}`,profile,config)
+          Axios.put(`http://localhost:8080/api/Candidate/${userid}/update`,profile,config)
           .then(res => {
           if(res.data!=null){
             console.log(res.data);
@@ -106,7 +108,7 @@ export default class UpdateProfile extends React.Component{
             this.props.history.push(`/ViewCandidateProfile/${userid}`);
           }
         })
-
+        event.preventDefault();
     }
 
 

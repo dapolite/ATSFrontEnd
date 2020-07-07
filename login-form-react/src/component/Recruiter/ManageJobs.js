@@ -20,7 +20,7 @@ export default class ManageJobs extends React.Component{
         this.state = {
             managejobs: [],
             currentPage : 1,
-            jobsPerPage : 5
+            jobsPerPage : 10
         };
     }
 
@@ -104,8 +104,8 @@ export default class ManageJobs extends React.Component{
                                 <thead>
                                     <tr>
                                         <th>Jobs</th>
-                                        <th>Location</th>
-                                        <th>Job Type</th>
+                                        {/* <th>Location</th>
+                                        <th>Job Type</th> */}
                                         <th>Deadline</th>
                                         <th>Action</th>
                                     </tr>
@@ -116,8 +116,8 @@ export default class ManageJobs extends React.Component{
                                          (
                                             <tr key={index}>
                                                 <td>{mjobs.jobposttitle}</td>
-                                                <td>{mjobs.jobpostlocation}</td>
-                                                <td>{mjobs.jobposttype}</td>
+                                                {/* <td>{mjobs.jobpostlocation}</td>
+                                                <td>{mjobs.jobposttype}</td> */}
                                                 <td>{mjobs.jobpostdeadline}</td>
                                                 <td>
                                                     <Row>

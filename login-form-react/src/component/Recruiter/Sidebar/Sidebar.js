@@ -32,7 +32,7 @@ export default class Sidebar extends React.Component {
 
         const isUserLoggedIn = AuthenticationServiceRec.isUserLoggedIn();
         const username=AuthenticationServiceRec.getLoggedInUserName();
-        Axios.get(`http://localhost:8080/api/Recriuter/getId/${username}`)
+        Axios.get(`http://localhost:8080/api/Recruiter/getId/${username}`)
         .then((response)=>{
             this.setState({userid:response.data})
         });
@@ -50,6 +50,7 @@ export default class Sidebar extends React.Component {
                 <div className="sidebar-link" onClick={() => history.push(`/PostNewJobs/${this.state.userid}`)}><img src={email} className="homes-img" alt="email.png"></img>Post New Jobs</div>
                 <hr className="line-color"></hr>
                 <div className="sidebar-link" onClick={this.logoutFunc}><img src={off} className="homes-img" alt="off.png"></img>Log Out</div>
+                {/* {isUserLoggedIn && <div className="sidebar-link" onClick={AuthenticationServiceRec.logout}><img src={off} className="homes-img" alt="off.png"></img>Logout</div>} */}
             </div>
             </div>
         )

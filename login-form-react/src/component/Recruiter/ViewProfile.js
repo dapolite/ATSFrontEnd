@@ -11,7 +11,9 @@ export default class ViewProfile extends React.Component{
 
     constructor() {
         super();
-        this.state = { users: [] };
+        this.state = { 
+            users: []
+         };
       }
     
 
@@ -27,13 +29,15 @@ export default class ViewProfile extends React.Component{
     // }
 
     componentDidMount(){
+        
         const username=AuthenticationServiceRec.getLoggedInUserName();
         console.log(username)
-        const userId=this.props.match.params.uid;
-        console.log(userId);
-        const { match: { params } } = this.props;
-        Axios.get(`http://localhost:8080/api/Recruiter/getId/${userId}`)
-        .then(res=>sessionStorage.setItem('userId',res.data));
+        const user=sessionStorage.getItem('userId');
+        console.log(user)
+        Axios.get(`http://localhost:8080/api/Recruiter/${username}/getRecruiter`)
+        .then((res)=>
+            this.setState({ users:res.data })
+        );
     }
 
     handleSubmit = event => {
@@ -73,6 +77,8 @@ export default class ViewProfile extends React.Component{
     }
 
     render(){
+        const userid=this.props.match.params.uid;
+        console.log(userid);
         return(
             <Row className="no-gutters">
                 <Sidebar/>
@@ -97,8 +103,8 @@ export default class ViewProfile extends React.Component{
                                     <input className="input13" placeholder="Full Name" readOnly></input>
                                 </div>
                                 
-                                <div className="resume2 text-left">
-                                    <p id="fullnameid">{this.state.users.firstname} {this.state.users.lastname}</p>
+                                <div className="resume2">
+                                    <p id="fullnameid" className="two">{this.state.users.firstname} {this.state.users.lastname}</p>
                                 </div>
                             </Col>
                         </Row>
@@ -110,8 +116,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    {/* <p id="usernameid" className="input1-vprec">Username</p> */}
-                                    <h5 id="usernameid">{this.state.users.username}</h5>
+                                    <p id="usernameid" className="two">{this.state.users.userName}</p>
                                 </div>
                             </Col>
                         </Row>
@@ -123,8 +128,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="emailaddressid" className="input1-vprec">Email Address</p>
-                                    {/* <h5 id="emailaddressid">{this.state.users.email}</h5> */}
+                                    <p id="emailaddressid" className="two">{this.state.users.email}</p>
                                 </div>
                             </Col>
                         </Row>
@@ -136,8 +140,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="mobilenumberid" className="input1-vprec">Mobile Number</p>
-                                    {/* <h5 id="mobilenumberid">{this.state.users.phoneno}</h5> */}
+                                    <p id="mobilenumberid" className="two">{this.state.users.phoneno}</p>
                                 </div>
                             </Col>
                         </Row>
@@ -167,7 +170,7 @@ export default class ViewProfile extends React.Component{
                         </Row>
                         <br/><br/> */}
                         <Row>
-                            <h3 >Company Details</h3>
+                            <h3 className="recbasicinfo">Company Details</h3>
                         </Row>
                         <br/>
                         <Row>
@@ -177,7 +180,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="companynameid" className="input1-vprec">Company Name</p>
+                                    <p id="companynameid" className="input1-vp input1">Enter your company name</p>
                                 </div>
                             </Col>
                         </Row>
@@ -189,7 +192,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="companyaddressid" className="input1-vprec">Company Address</p>
+                                    <p id="companyaddressid" className="input1-vp input1">Enter your company address</p>
                                 </div>
                             </Col>
                         </Row>
@@ -201,7 +204,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="companydescid" className="input1-vprec">Company Description</p>
+                                    <p id="companydescid" className="input1-vp input1">Enter your company description</p>
                                 </div>
                             </Col>
                         </Row>
@@ -217,7 +220,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="sociallinksid" className="input1-vprec">linkedin.com</p>
+                                    <p id="sociallinksid" className="input1-vp input1">Enter your social links</p>
                                 </div>
                             </Col>
                         </Row>
@@ -233,7 +236,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="currentpasswordid" className="input1-vprec">Current Password</p>
+                                    <p id="currentpasswordid" className="input1-vp input1">Enter your current password</p>
                                 </div>
                             </Col>
                         </Row>
@@ -245,7 +248,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="newpasswordid" className="input1-vprec">New password</p>
+                                    <p id="newpasswordid" className="input1-vp input1">Enter your new password</p>
                                 </div>
                             </Col>
                         </Row>
@@ -257,7 +260,7 @@ export default class ViewProfile extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <p id="retypepasswordid" className="input1-vprec">Re-Type Password</p>
+                                    <p id="retypepasswordid" className="input1-vp input1">Re-type your new password</p>
                                 </div>
                             </Col>
                         </Row>

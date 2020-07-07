@@ -44,11 +44,11 @@ export default class Routes extends Component{
                     <Route path="/LoginFormJobSeeker" component={LoginFormJobSeeker} />
                     <Route path="/RegisterFormRecruiter" component={RegisterFormRecruiter} />
                     <Route path="/RegisterFormRecruiterSecondPage" component={RegisterFormRecruiterSecondPage} />
-                    <Route path="/ViewProfile" component={ViewProfile} />
-                    <Route path="/Dashboard" component={Dashboard} />
-                    <Route path="/ManageCandidates" component={ManageCandidates} />
-                    <Route path="/ShortlistedCandidates" component={ShortlistedCandidates} />
-                    <Route path="/ManageJobs" component={ManageJobs} />
+                    <Route path="/ViewProfile/:uid" component={ViewProfile} />
+                    <Route path="/Dashboard/:uid" component={Dashboard} />
+                    <Route path="/ManageCandidates/:uid" component={ManageCandidates} />
+                    <Route path="/ShortlistedCandidates/:uid" component={ShortlistedCandidates} />
+                    <Route path="/ManageJobs/:uid" component={ManageJobs} />
                     <Route path="/PostNewJobs" component={PostNewJobs} />
 
                     <Route path="/ViewJob/:jobid" component={ViewJob} />

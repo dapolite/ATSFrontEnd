@@ -28,7 +28,7 @@ export default class Sidebar extends React.Component {
     render(){
         const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
         const username=AuthenticationService.getLoggedInUserName();
-        Axios.get(`http://localhost:8080/api/candidates/getId/${username}`)
+        Axios.get(`http://localhost:8080/api/Candidate/getId/${username}`)
         .then((response)=>{
             this.setState({userid:response.data})
         });

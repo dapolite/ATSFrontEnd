@@ -25,7 +25,7 @@ export default class ViewProfile extends React.Component{
         console.log(username)
         const user=sessionStorage.getItem('userId');
         console.log(user)
-        Axios.get(`http://localhost:8080/api/candidates/${username}`)
+        Axios.get(`http://localhost:8080/api/Candidate/${username}/getCandidate`)
         .then((res)=>
             this.setState({ users:res.data })
         );
@@ -58,7 +58,7 @@ export default class ViewProfile extends React.Component{
                         <Row>
                             <Col>
                                 <Card className="border-0" style={{ width: '15rem' }}>
-                                    <Card.Img className="thumbprof" variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS0vBS3WCCCBV9W43wW17Y3vqn_cCuEi8MJ9-DyNPGdaizAmKK7" />
+                                    <Card.Img className="thumbprof" variant="top" src="https://cdn.iconscout.com/icon/free/png-512/laptop-user-1-1179329.png" />
                                     <Card.Body>
                                         <Button variant="primary">Change</Button>
                                     </Card.Body>

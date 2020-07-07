@@ -19,7 +19,11 @@ export default class ManageCandidates extends React.Component{
         this.state = {
             cand : [],
             currentPage : 1,
-            candidatesPerPage : 10
+            candidatesPerPage : 10,
+            name : '',
+            exp : '',
+            loc : '',
+            skills : ''
         };
     }
 
@@ -30,6 +34,33 @@ export default class ManageCandidates extends React.Component{
         .then((response) => 
             this.setState( { cand:response.data } ),
         );
+    }
+
+    shortlistButton = () => {
+
+        const shortlist = {
+            name : this.state.name,
+            exp : this.state.exp,
+            loc : this.state.loc,
+            skills : this.state.skills
+        };
+
+        const config = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+        };
+
+        Axios.post(`http://localhost:8080/api/shortlistedcandidates`,shortlist,config)
+        .then(res => {
+            if(res.data!=null){
+                console.log(res.data);
+                console.log(shortlist);
+                console.log(res);
+                alert("Candidate Shortlisted");
+                alert(shortlist);
+            }
+        })
     }
 
     changePage = event => {
@@ -191,7 +222,7 @@ export default class ManageCandidates extends React.Component{
                                             <td>{cands.candidate_exp}</td>
                                             <td>{cands.candidate_address}</td>
                                             <td>{cands.candidate_info}</td>
-                                            <td><Button>Shortlist Candidate</Button></td>
+                                            <td><Button onClick={this.shortlistButton}>Shortlist Candidate</Button></td>
                                             <td>
                                                     <Row>
                                                         <Col>

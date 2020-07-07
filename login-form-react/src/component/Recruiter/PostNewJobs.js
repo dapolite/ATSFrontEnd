@@ -7,6 +7,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 import axios from 'axios'
+import AuthenticationServiceRec from '../Service/AuthenticationServiceRec'
 import history from '../history';
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
@@ -25,7 +26,8 @@ export default class PostNewJobs extends React.Component{
             jobpostcompanyname : '',
             jobpostwebaddress : '',
             jobpostcompanyprofile : '',
-            jobpostdeadline : ''
+            jobpostdeadline : '',
+            jobType :[]
         };
         this.state = {
             country: '',
@@ -46,11 +48,8 @@ export default class PostNewJobs extends React.Component{
     changeHandler = event => {
         this.setState({ [event.target.name]: event.target.value });
       };
-
+    
     handleSubmit = event => {
-
-        const user = sessionStorage.postItem('userId');
-        console.log(user);
 
         const jobsposts = {
             jobposttitle : this.state.jobposttitle,
@@ -72,7 +71,11 @@ export default class PostNewJobs extends React.Component{
             }
           };
 
-          axios.post(`http://localhost:8080/api/jobspost`,jobsposts,config)
+          const username=AuthenticationServiceRec.getLoggedInUserName();
+        console.log(username)
+        const user=sessionStorage.getItem('userId');
+        console.log(user)
+          axios.post(`http://localhost:8080/api/jobspost/${user}`,jobsposts,config)
           .then(res => {
             if(res.data!=null){
                 console.log(res.data);
@@ -80,7 +83,6 @@ export default class PostNewJobs extends React.Component{
                 console.log(res);
                 alert("Job Posted");
                 alert(jobsposts);
-                history.push('/Dashboard');
             }
         })
     }
@@ -122,20 +124,21 @@ export default class PostNewJobs extends React.Component{
                                     <Col>
                                         <select className="selectdropdown" name="jobpostcategory" value={jobpostcategory} onChange={this.changeHandler} required>
                                             <option value="" disabled selected>Job Category</option>
-                                            <option value="1">Action</option>
-                                            <option value="2">Another action</option>
-                                            <option value="3">Something else</option>
-                                            <option value="4">Something else</option>
+                                            <option value="Developer">Developer</option>
+                                            <option value="Human Resource Manager">Human Resource Manager</option>
+                                            <option value="Chartard Accountant">Chartard Accountant</option>
+                                            <option value="Business Analyst">Business Analyst</option>
+                                            <option value="Data Analyst">Data Analyst</option>
                                         </select>
                                     </Col>
 
                                     <Col>
-                                        <select className="selectdropdown" /*name="jobpostcategory" value={jobpostcategory} onChange={this.changeHandler} required*/>
+                                        <select className="selectdropdown" name="jobposttype" onChange={this.changeHandler} required>
                                             <option value="" disabled selected>Job Type</option>
-                                            <option value="1">Part Time</option>
-                                            <option value="2">Full Time</option>
-                                            <option value="3">Permanent</option>
-                                            <option value="4">Temporary</option>
+                                            <option value="Part Time">Part Time</option>
+                                            <option value="Full Time">Full Time</option>
+                                            <option value="Permanent">Permanent</option>
+                                            <option value="Temporary">Temporary</option>
                                         </select>
                                     </Col>
                                 </Row>
@@ -144,32 +147,33 @@ export default class PostNewJobs extends React.Component{
                                     <Col>
                                         <select className="selectdropdown" name="jobpostexperience" value={jobpostexperience} onChange={this.changeHandler} required>
                                             <option value="" disabled selected>Experience</option>
-                                            <option value="1">Less Than 1 Year</option>
-                                            <option value="2">2 Years</option>
-                                            <option value="3">3 Years</option>
-                                            <option value="4">4 Years</option>
-                                            <option value="5">More Than 5 Years</option>
+                                            <option value="Less Than 1 Year">Less Than 1 Year</option>
+                                            <option value="2 Years">2 Years</option>
+                                            <option value="3 Years">3 Years</option>
+                                            <option value="4 Years">4 Years</option>
+                                            <option value="More Than 5 Years">More Than 5 Years</option>
                                         </select>
                                     </Col>
 
                                     <Col>
                                         <select className="selectdropdown" name="jobpostqualification" value={jobpostqualification} onChange={this.changeHandler} required>
                                             <option value="" disabled selected>Qualification</option>
-                                            <option value="1">Action</option>
-                                            <option value="2">Another action</option>
-                                            <option value="3">Something else</option>
-                                            <option value="4">Something else</option>
+                                            <option value="SSC">SSC</option>
+                                            <option value="HSC">HSC</option>
+                                            <option value="Under Graduate">Under Graduate</option>
+                                            <option value="Post Graduate">Post Graduate</option>
+                                            <option value="Diploma">Diploma</option>
                                         </select>
                                     </Col>
                                 </Row>
                                 <br/>
                                 <Row>
                                     <Col>
-                                        <CountryDropdown className="selectdropdown" variant="light" id="dropdown-item-button" value={country} onChange={(val) => this.selectCountry(val)} />
+                                        <CountryDropdown className="selectdropdown" variant="light" id="dropdown-item-button" value={this.state.country} onChange={(val) => this.selectCountry(val)} />
                                     </Col>
 
                                     <Col>
-                                        <RegionDropdown className="selectdropdown" variant="light" id="dropdown-item-button" country={country} value={region} onChange={(val) => this.selectRegion(val)} />
+                                        <RegionDropdown className="selectdropdown" variant="light" id="dropdown-item-button" country={this.state.country} value={this.state.region} onChange={(val) => this.selectRegion(val)} />
                                     </Col>
                                 </Row>
                                 </Card>
@@ -245,7 +249,7 @@ export default class PostNewJobs extends React.Component{
                                 </div>
                                 
                                 <div className="resume2">
-                                    <input type="date" className="input1 selectdropdown1" name="deadlinedate" value={jobpostdeadline} onChange={this.changeHandler} required/>
+                                    <input type="date" className="input1 selectdropdown1" name="jobpostdeadline" value={jobpostdeadline} onChange={this.changeHandler} required/>
                                 </div>
                             </Col>
                         </Row>

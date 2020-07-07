@@ -3,35 +3,45 @@ import ReactSearchBox from 'react-search-box';
 import IconButton from "@material-ui/core/IconButton";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
-import { TextField } from '@material-ui/core';
+import {InputGroup,FormControl, Button} from 'react-bootstrap'
+import {faSearch, faTimes} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 export default class App extends Component {
-  data = [
-    {
-      key: 'john',
-      value: 'John Doe',
-    },
-    {
-      key: 'jane',
-      value: 'Jane Doe',
-    },
-    {
-      key: 'mary',
-      value: 'Mary Phillips',
-    },
-    {
-      key: 'robert',
-      value: 'Robert',
-    },
-    {
-      key: 'karius',
-      value: 'Karius',
-    },
-  ]
+
+  constructor(props){
+    super(props);
+    this.state = {
+      search : ''
+    }
+  };
+
+  searchChange = event => {
+    this.setState({ [event.target.name] : event.target.value })
+  };
+
+  cancelSearch = () => {
+    this.setState({ "search" : '' })
+  };
 
   render() {
+
+    const {search} = this.state;
+
     return (
-      <ReactSearchBox placeholder="Search..." data={this.data} callback={record => console.log(record)}/>
+      <div>
+        <InputGroup>
+          <FormControl placeholder="Search" name="search" value={search} onChange={this.searchChange}/>
+          <InputGroup.Append>
+            <Button size="sm" variant="outline-info" type="button">
+              <FontAwesomeIcon icon={faSearch}/>
+            </Button>
+            <Button size="sm" variant="outline-danger" type="button" onClick={this.cancelSearch}>
+              <FontAwesomeIcon icon={faTimes}/>
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </div>
     )
   }
 }

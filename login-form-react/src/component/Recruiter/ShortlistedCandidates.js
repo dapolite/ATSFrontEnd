@@ -6,11 +6,84 @@ import CandidateItem from '../CandidateItem/CandidateItem';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Axios from 'axios'
+import {InputGroup, FormControl, Button} from 'react-bootstrap'
 import { Table } from 'react-bootstrap';
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faFastBackward, faStepBackward, faStepForward, faFastForward} from '@fortawesome/free-solid-svg-icons'
 
 export default class ManageCandidates extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            cand : [],
+            currentPage : 1,
+            candidatesPerPage : 5
+        }
+    };
+
+    changePage = event => {
+        this.setState({
+            [event.target.name] : parseInt(event.target.value)
+        });
+    };
+
+    firstPage = () => {
+        if(this.state.currentPage > 1){
+            this.setState({
+                currentPage : 1
+            });
+        }
+    };
+
+    prevPage = () => {
+        if(this.state.currentPage > 1){
+            this.setState({
+                currentPage : this.state.currentPage - 1
+            });
+        }
+    };
+
+    lastPage = () => {
+        if(this.state.currentPage < Math.ceil(this.state.cand.length / this.state.candidatesPerPage)){
+            this.setState({
+                currentPage : Math.ceil(this.state.cand.length / this.state.candidatesPerPage)    
+            });
+        }
+    };
+
+    nextPage = () => {
+        if(this.state.currentPage < Math.ceil(this.state.cand.length / this.state.candidatesPerPage)){
+            this.setState({
+                currentPage : this.state.currentPage + 1
+            });
+        }
+    };
+
+    componentDidMount(){
+        const user = sessionStorage.getItem('userId');
+        console.log(user)
+        Axios.get(`http://localhost:8080/api/shortlistedcandidates`)
+        .then((response) => 
+            this.setState( { cand:response.data } ),
+        );
+    }
+
     render(){
+        const {cand, currentPage, candidatesPerPage} = this.state;
+        const lastIndex = currentPage * candidatesPerPage;
+        const firstIndex = lastIndex - candidatesPerPage;
+        const currentCandidates = cand.slice(firstIndex, lastIndex);
+        const totalPages = cand.length / candidatesPerPage;
+
+        const pageNumCss = {
+            width : "45px",
+            border : "1px solid #17A2B8",
+            color : "17A2B8",
+            textAlign : "center",
+            fontWeight : "bold" 
+        };
+
         return(
             <Row className="no-gutters">  
                 <Sidebar />              
@@ -25,33 +98,6 @@ export default class ManageCandidates extends React.Component{
                         <br></br>
                         <Row>
                             <Col>
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                            <Col>
-                            <Card>
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">Number</Card.Subtitle>
-                                        <Card.Text>content.</Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        </Row>
-                        <br></br> 
-                        <Row>
-                            <Col>
                                 <Table bordered hover striped variant="light">
                                     <thead>
                                         <tr>
@@ -59,16 +105,19 @@ export default class ManageCandidates extends React.Component{
                                             <th>Experience</th>
                                             <th>Location</th>
                                             <th>Skills</th>
-                                            <th>Shortlist Candidates</th>
+                                            <th>Shortlisted Candidates</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                        {
+                                            currentCandidates.map((cands, index) =>
+                                            (
+                                                <tr key={index}>
+                                            <td>{cands.name}</td>
+                                            <td>{cands.exp}</td>
+                                            <td>{cands.loc}</td>
+                                            <td>{cands.skills}</td>
                                             <td>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="feather feather-check-circle col-spaced2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                                 <p>Shortlisted</p>
@@ -84,8 +133,37 @@ export default class ManageCandidates extends React.Component{
                                                 </Row>
                                             </td>
                                         </tr>
+                                            ))
+                                        }
                                     </tbody>
                                 </Table>
+                                <Card.Footer style={{"backgroundColor" : "white", "borderTop" : "white"}}>
+                                        <div style = {{"float" : "left"}}>
+                                            Showing Page {currentPage} of {totalPages}
+                                        </div>
+                                        <div style = {{"float" : "right"}}>
+                                            <InputGroup size="sm">
+                                                <InputGroup.Prepend>
+                                                    <Button type="button" variant="outline-info" disabled={currentPage === 1 ? true : false} onClick={this.firstPage}>
+                                                        <FontAwesomeIcon icon={faFastBackward} />First
+                                                    </Button>
+                                                    <Button type="button" variant="outline-info" disabled={currentPage === 1 ? true : false} onClick={this.prevPage}>
+                                                        <FontAwesomeIcon icon={faStepBackward} />Prev
+                                                    </Button>
+                                                </InputGroup.Prepend>
+                                                <FormControl style={pageNumCss} name="currentPage" value={currentPage} onChange={this.changePage} />
+                                                <InputGroup.Append>
+                                                    <Button type="button" variant="outline-info" disabled={currentPage === totalPages ? true : false} onClick={this.nextPage}>
+                                                        <FontAwesomeIcon icon={faStepForward} />Next
+                                                    </Button>
+                                                    <Button type="button" variant="outline-info" disabled={currentPage === totalPages ? true : false} onClick={this.lastPage}>
+                                                        <FontAwesomeIcon icon={faFastForward} />Last
+                                                    </Button>
+                                                </InputGroup.Append>
+                                            </InputGroup>
+                                        </div>
+                                    </Card.Footer>
+                                    <br/><br/>
                             </Col>
                         </Row>
                     </Col>

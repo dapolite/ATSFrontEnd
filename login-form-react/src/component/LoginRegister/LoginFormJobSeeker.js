@@ -42,7 +42,7 @@ class Form extends Component {
     .executeBasicAuthenticationService(this.state.email, this.state.password)
     .then(() => {
         AuthenticationService.registerSuccessfulLogin(this.state.email, this.state.password)
-        Axios.get(`http://localhost:8080/api/candidates/getId/${this.state.email}`)
+        Axios.get(`http://localhost:8080/api/Candidate/getId/${this.state.email}`)
         .then((response)=>{
           this.setState({id:response.data})
           console.log(this.state.id)
