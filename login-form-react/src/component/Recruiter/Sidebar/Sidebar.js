@@ -27,7 +27,6 @@ export default class Sidebar extends React.Component {
         AuthenticationServiceRec.logout();
         history.push('/');
     }
-
     render(){
 
         const isUserLoggedIn = AuthenticationServiceRec.isUserLoggedIn();
@@ -40,7 +39,7 @@ export default class Sidebar extends React.Component {
 
         return (
             <div className="row no-gutters">
-            <div className="sidebar sidebar-container">
+            <div className="sidebar sidebar-container" style={{"background-color" : "#f10f10f10"}}>
                 <div><img src={SUDH_logo_1} className="sudh-logo" alt="SUDH_logo_1.png"></img></div><br/>
                 <div className="sidebar-link" onClick={() => history.push(`/Dashboard/${this.state.userid}`)}><img src={homes} className="homes-img" alt="homes.png"></img>Dashboard</div><br/>
                 <div className="sidebar-link" onClick={() => history.push(`/ViewProfile/${this.state.userid}`)}><img src={user} className="homes-img" alt="user.png"></img>View Profile</div><br/>
